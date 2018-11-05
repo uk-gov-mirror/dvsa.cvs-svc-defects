@@ -1,0 +1,107 @@
+[
+  {
+    "imNumber": 1,
+    "imDescription": "Registration Plate",
+    "forVehicleType": [
+      "psv"
+    ],
+    "additionalInfo": {
+      "psv": {
+        "location": {
+          "vertical": [],
+          "horizontal": [],
+          "lateral": [],
+          "longitudinal": [
+            "front"
+          ],
+          "rowNumber": [],
+          "seatNumber": [],
+          "axleNumber": []
+        },
+        "notes": false
+      },
+      "hgv": {},
+      "trl": {}
+    },
+    "items": [
+      {
+        "itemNumber": 1,
+        "itemDescription": "A registration plate:",
+        "forVehicleType": [
+          "psv"
+        ],
+        "deficiencies": [
+          {
+            "ref": "1.1.a",
+            "deficiencyId": "a",
+            "deficiencySubId": null,
+            "deficiencyCategory": "Major",
+            "deficiencyText": "missing.",
+            "stdForProhibition": false,
+            "forVehicleType": [
+              "psv",
+              "hgv"
+            ]
+          },
+          {
+            "ref": "1.1.b",
+            "deficiencyId": "b",
+            "deficiencySubId": null,
+            "deficiencyCategory": "Major",
+            "deficiencyText": "insecure.",
+            "stdForProhibition": false,
+            "forVehicleType": [
+              "psv",
+              "hgv"
+            ]
+          }
+        ]
+      },
+      {
+        "itemNumber": 2,
+        "itemDescription": "A registration mark:",
+        "forVehicleType": [
+          "psv"
+        ],
+        "deficiencies": [
+          {
+            "ref": "1.2.a",
+            "deficiencyId": "a",
+            "deficiencySubId": null,
+            "deficiencyCategory": "Major",
+            "deficiencyText": "missing.",
+            "stdForProhibition": false,
+            "forVehicleType": [
+              "psv",
+              "hgv"
+            ]
+          },
+          {
+            "ref": "1.2.b",
+            "deficiencyId": "b",
+            "deficiencySubId": null,
+            "deficiencyCategory": "Major",
+            "deficiencyText": "illegible.",
+            "stdForProhibition": false,
+            "forVehicleType": [
+              "psv",
+              "hgv"
+            ]
+          },
+          {
+            "ref": "1.2.c",
+            "deficiencyId": "c",
+            "deficiencySubId": null,
+            "deficiencyCategory": "Major",
+            "deficiencyText": "not in accordance with the requirements.",
+            "stdForProhibition": false,
+            "forVehicleType": [
+              "psv",
+              "hgv"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
