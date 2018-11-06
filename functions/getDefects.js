@@ -11,7 +11,6 @@ const getDefects = async () => {
       }
     })
     .catch((e) => {
-      console.log(e)
       return {
         statusCode: e.statusCode,
         headers: e.headers,
