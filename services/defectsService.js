@@ -4,7 +4,7 @@ const AWS = require('aws-sdk')
 const HTTPResponseStatus = require('../models/HTTPResponseStatus')
 
 const dbClient = new AWS.DynamoDB.DocumentClient(
-  process.env.IS_OFFLINE ? { region: 'localhost', endpoint: 'http://localhost:8000' } : {}
+  process.env.IS_OFFLINE ? { region: 'localhost', endpoint: `http://localhost:${process.env.DYNAMO_PORT}` } : {}
 )
 
 /**
