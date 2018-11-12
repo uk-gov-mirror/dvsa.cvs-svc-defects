@@ -30,7 +30,16 @@ https://github.com/UKHomeOffice/repo-security-scanner
 
 These will be run as part of prepush so please make sure you set up the git hook above so you don't accidentally introduce any new security vulnerabilities.
 
+### Testing
+In order to test, you need to run the following:
+- `npm run test` for unit tests
+- `npm run test-i` for integration tests
+
+**Please do note that these commands need to be ran with the below environment variables populated.**
+
 
 ### Environmental variables
 
-The `IS_OFFLINE` environment variable needs to be set to `true` in order for the microservice to connect to the local dynamodb instance.
+- The `IS_OFFLINE` environment variable needs to be set to `true` in order for the microservice to connect to the local dynamodb instance.
+- The `DYNAMO_PORT` environment variable needs to be set to a value representing the port you want the dynamodb shell to run on. This variable is mandatory.
+- The `SERVERLESS_PORT` environment variable needs to be set to a value representing the port you want the serverless instance to run on. This variable is mandatory.
