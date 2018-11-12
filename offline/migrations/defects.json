@@ -103,5 +103,380 @@
         ]
       }
     ]
+  },
+  {
+    "imNumber": 3,
+    "imDescription": "Seat Belts & Supplementary Restraint Systems",
+    "forVehicleType": [
+      "psv"
+    ],
+    "additionalInfo": {
+      "psv": {
+        "location": {
+          "vertical": [
+            "upper"
+          ],
+          "horizontal": [],
+          "lateral": [
+            "nearside"
+          ],
+          "longitudinal": [],
+          "rowNumber": [
+            2
+          ],
+          "seatNumber": [
+            2
+          ],
+          "axleNumber": []
+        },
+        "notes": true
+      },
+      "hgv": {},
+      "trl": {}
+    },
+    "items": [
+      {
+        "itemNumber": 1,
+        "itemDescription": "Obligatory Seat Belt:",
+        "forVehicleType": [
+          "psv",
+          "hgv"
+        ],
+        "deficiencies": [
+          {
+            "ref": "3.1.a",
+            "deficiencyId": "a",
+            "deficiencySubId": null,
+            "deficiencyCategory": "Major",
+            "deficiencyText": "missing.",
+            "stdForProhibition": false,
+            "forVehicleType": [
+              "psv",
+              "hgv"
+            ]
+          },
+          {
+            "ref": "3.1.b",
+            "deficiencyId": "b",
+            "deficiencySubId": null,
+            "deficiencyCategory": "Major",
+            "deficiencyText": "of an incorrect type.",
+            "stdForProhibition": false,
+            "forVehicleType": [
+              "psv",
+              "hgv"
+            ]
+          }
+        ]
+      },
+      {
+        "itemNumber": 2,
+        "itemDescription": "Anchorages:",
+        "forVehicleType": [
+          "psv",
+          "hgv"
+        ],
+        "deficiencies": [
+          {
+            "ref": "3.2.a.i",
+            "deficiencyId": "a",
+            "deficiencySubId": "i",
+            "deficiencyCategory": "Major",
+            "deficiencyText": "with excessive corrosion, serious deterioration or a fracture in a load bearing member of the vehicle structure within 30cm of the anchorage (where a seat belt is attached to a seat frame this will apply to all seat mounting points).",
+            "stdForProhibition": false,
+            "forVehicleType": [
+              "psv",
+              "hgv"
+            ]
+          },
+          {
+            "ref": "3.2.a.ii",
+            "deficiencyId": "a",
+            "deficiencySubId": "ii",
+            "deficiencyCategory": "Dangerous",
+            "deficiencyText": "with excessive corrosion, serious deterioration or a fracture in a load bearing member of the vehicle structure within 30cm of the anchorage (where a seat belt is attached to a seat frame this will apply to all seat mounting points) and is likely to detach.",
+            "stdForProhibition": true,
+            "forVehicleType": [
+              "psv",
+              "hgv"
+            ]
+          },
+          {
+            "ref": "3.2.b",
+            "deficiencyId": "b",
+            "deficiencySubId": null,
+            "deficiencyCategory": "Major",
+            "deficiencyText": "a seat belt not securely fixed to the seat or to the vehicle structure.",
+            "stdForProhibition": false,
+            "forVehicleType": [
+              "psv",
+              "hgv"
+            ]
+          }
+        ]
+      },
+      {
+        "itemNumber": 3,
+        "itemDescription": "Locking Mechanism, Stalks, Retracting Mechanism and Fittings:",
+        "forVehicleType": [
+          "psv",
+          "hgv"
+        ],
+        "deficiencies": [
+          {
+            "ref": "3.3.a",
+            "deficiencyId": "a",
+            "deficiencySubId": null,
+            "deficiencyCategory": "Major",
+            "deficiencyText": "locking mechanism of a seat belt does not secure or release as intended.",
+            "stdForProhibition": false,
+            "forVehicleType": [
+              "psv",
+              "hgv"
+            ]
+          },
+          {
+            "ref": "3.3.b",
+            "deficiencyId": "b",
+            "deficiencySubId": null,
+            "deficiencyCategory": "Major",
+            "deficiencyText": "an attachment or adjustment fitting fractured, badly deteriorated or not operating effectively.",
+            "stdForProhibition": false,
+            "forVehicleType": [
+              "psv",
+              "hgv"
+            ]
+          },
+          {
+            "ref": "3.3.c",
+            "deficiencyId": "c",
+            "deficiencySubId": null,
+            "deficiencyCategory": "Major",
+            "deficiencyText": "corrosion or deterioration of a flexible stalk likely to lead to failure under load.",
+            "stdForProhibition": false,
+            "forVehicleType": [
+              "psv",
+              "hgv"
+            ]
+          },
+          {
+            "ref": "3.3.d",
+            "deficiencyId": "d",
+            "deficiencySubId": null,
+            "deficiencyCategory": "Major",
+            "deficiencyText": "broken flexible stalk strands",
+            "stdForProhibition": false,
+            "forVehicleType": [
+              "psv",
+              "hgv"
+            ]
+          },
+          {
+            "ref": "3.3.e",
+            "deficiencyId": "e",
+            "deficiencySubId": null,
+            "deficiencyCategory": "Major",
+            "deficiencyText": "a retracting mechanism that does not retract the webbing sufficiently to remove all of the slack from the belt with the locking mechanism fastened and the seat unoccupied.",
+            "stdForProhibition": false,
+            "forVehicleType": [
+              "psv",
+              "hgv"
+            ]
+          }
+        ]
+      },
+      {
+        "itemNumber": 4,
+        "itemDescription": "Condition of Webbing:",
+        "forVehicleType": [
+          "psv",
+          "hgv"
+        ],
+        "deficiencies": [
+          {
+            "ref": "3.4.a.i",
+            "deficiencyId": "a",
+            "deficiencySubId": "i",
+            "deficiencyCategory": "Minor",
+            "deficiencyText": "a cut or damage or fluffing or fraying, which is not sufficient to obstruct correct operation of the belt or which has not clearly weakened the webbing.",
+            "stdForProhibition": false,
+            "forVehicleType": [
+              "psv",
+              "hgv"
+            ]
+          },
+          {
+            "ref": "3.4.a.ii",
+            "deficiencyId": "a",
+            "deficiencySubId": "ii",
+            "deficiencyCategory": "Major",
+            "deficiencyText": "a cut or damage or fluffing or fraying or overstretching sufficient to obstruct correct operation of the belt or significantly weaken the webbing.",
+            "stdForProhibition": false,
+            "forVehicleType": [
+              "psv",
+              "hgv"
+            ]
+          },
+          {
+            "ref": "3.4.b",
+            "deficiencyId": "a",
+            "deficiencySubId": "ii",
+            "deficiencyCategory": "Major",
+            "deficiencyText": "stitching badly frayed, insecure, incomplete or repaired.",
+            "stdForProhibition": false,
+            "forVehicleType": [
+              "psv",
+              "hgv"
+            ]
+          }
+        ]
+      },
+      {
+        "itemNumber": 5,
+        "itemDescription": "Obvious signs of structural weakness in a Seat belt; fitting, guide, stalk or pivot",
+        "forVehicleType": [
+          "psv",
+          "hgv"
+        ],
+        "deficiencies": [
+          {
+            "ref": "3.5",
+            "deficiencyId": null,
+            "deficiencySubId": null,
+            "deficiencyCategory": "Major",
+            "deficiencyText": "such that failure is likely.",
+            "stdForProhibition": false,
+            "forVehicleType": [
+              "psv",
+              "hgv"
+            ]
+          }
+        ]
+      },
+      {
+        "itemNumber": 6,
+        "itemDescription": "Seats with seat belts attached to them:",
+        "forVehicleType": [
+          "psv",
+          "hgv"
+        ],
+        "deficiencies": [
+          {
+            "ref": "3.6.a",
+            "deficiencyId": "a",
+            "deficiencySubId": null,
+            "deficiencyCategory": "Dangerous",
+            "deficiencyText": "insecure.",
+            "stdForProhibition": true,
+            "forVehicleType": [
+              "psv",
+              "hgv"
+            ]
+          },
+          {
+            "ref": "3.6.b",
+            "deficiencyId": "b",
+            "deficiencySubId": null,
+            "deficiencyCategory": "Major",
+            "deficiencyText": "with a cracked or fractured leg or frame.",
+            "stdForProhibition": false,
+            "forVehicleType": [
+              "psv",
+              "hgv"
+            ]
+          }
+        ]
+      },
+      {
+        "itemNumber": 7,
+        "itemDescription": "A seat belt:",
+        "forVehicleType": [
+          "psv",
+          "hgv"
+        ],
+        "deficiencies": [
+          {
+            "ref": "3.7.a",
+            "deficiencyId": "a",
+            "deficiencySubId": null,
+            "deficiencyCategory": "Major",
+            "deficiencyText": "load limiter or pretensioner obviously missing where fitted as original equipment.",
+            "stdForProhibition": false,
+            "forVehicleType": [
+              "psv",
+              "hgv"
+            ]
+          },
+          {
+            "ref": "3.7.b",
+            "deficiencyId": "b",
+            "deficiencySubId": null,
+            "deficiencyCategory": "Major",
+            "deficiencyText": "pretensioner or a ‘folded type’ webbing load limiter obviously deployed.",
+            "stdForProhibition": false,
+            "forVehicleType": [
+              "psv",
+              "hgv"
+            ]
+          }
+        ]
+      },
+      {
+        "itemNumber": 8,
+        "itemDescription": "An airbag:",
+        "forVehicleType": [
+          "psv",
+          "hgv"
+        ],
+        "deficiencies": [
+          {
+            "ref": "3.8.a",
+            "deficiencyId": "a",
+            "deficiencySubId": null,
+            "deficiencyCategory": "Major",
+            "deficiencyText": "missing.",
+            "stdForProhibition": false,
+            "forVehicleType": [
+              "psv",
+              "hgv"
+            ]
+          },
+          {
+            "ref": "3.8.b",
+            "deficiencyId": "b",
+            "deficiencySubId": null,
+            "deficiencyCategory": "Major",
+            "deficiencyText": "deployed or disconnected.",
+            "stdForProhibition": false,
+            "forVehicleType": [
+              "psv",
+              "hgv"
+            ]
+          }
+        ]
+      },
+      {
+        "itemNumber": 9,
+        "itemDescription": "The SRS warning lamp",
+        "forVehicleType": [
+          "psv",
+          "hgv"
+        ],
+        "deficiencies": [
+          {
+            "ref": "3.9",
+            "deficiencyId": null,
+            "deficiencySubId": null,
+            "deficiencyCategory": "Major",
+            "deficiencyText": "indicates any kind of failure of the system.",
+            "stdForProhibition": false,
+            "forVehicleType": [
+              "psv",
+              "hgv"
+            ]
+          }
+        ]
+      }
+    ]
   }
 ]
