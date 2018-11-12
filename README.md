@@ -35,11 +35,9 @@ In order to test, you need to run the following:
 - `npm run test` for unit tests
 - `npm run test-i` for integration tests
 
-**Please do note that these commands need to be ran with the below environment variables populated.**
-
 
 ### Environmental variables
 
-- The `IS_OFFLINE` environment variable needs to be set to `true` in order for the microservice to connect to the local dynamodb instance.
-- The `DYNAMO_PORT` environment variable needs to be set to a value representing the port you want the dynamodb shell to run on. This variable is mandatory.
-- The `SERVERLESS_PORT` environment variable needs to be set to a value representing the port you want the serverless instance to run on. This variable is mandatory.
+- The `IS_OFFLINE` environment variable needs to be set to `true` in order for the microservice to connect to the local dynamodb instance. Defaults to `true`
+- The `SERVERLESS_PORT` environment variable needs to be set to a value representing the port you want the serverless instance to run on. This variable is mandatory. Defaults to `3000`
+- The `DYNAMO_PORT` environment variable needs to be set to a value representing the port you want the dynamodb shell to run on. This variable is mandatory. Defaults to `8000`.
