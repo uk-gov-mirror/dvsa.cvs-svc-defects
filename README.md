@@ -3,7 +3,8 @@
 #### Run AWS Lambda node functions locally with a mock API Gateway and DynamoDB to test against
 - `npm install`
 - `node_modules/.bin/sls dynamodb install`
-- `npm start` to start serverless locally
+- `npm start` to start serverless locally with default ports
+-  `IS_OFFLINE=true DYNAMO_PORT={dynamodb port} SERVERLESS_PORT={serverless port} ./node_modules/serverless/bin/serverless offline start` to start serverless locally with custom ports
 
 ### Git Hooks
 
