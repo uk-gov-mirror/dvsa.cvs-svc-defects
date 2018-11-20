@@ -6,8 +6,8 @@
   "scripts": {
     "start": "npm run eslint && ENV=local ./node_modules/serverless/bin/serverless offline start",
     "debug": "export SLS_DEBUG=* && ENV=local node --inspect ./node_modules/serverless/bin/serverless offline start",
-    "test": "ENV=local node_modules/.bin/mocha tests/**/*.unitTest.js",
-    "test-i": "ENV=local node_modules/.bin/mocha tests/**/*.intTest.js",
+    "test": "node_modules/.bin/mocha tests/**/*.unitTest.js",
+    "test-i": "node_modules/.bin/mocha tests/**/*.intTest.js",
     "dynamodb": "sls dynamodb start",
     "prepush": "ENV=local npm test && npm run eslint",
     "predeploy": "npm install && npm run prepush",
