@@ -11,7 +11,7 @@ plugins:
 
 functions:
   getDefects:
-    handler: handler.getDefects
+    handler: src/handler.getDefects
     events:
     - http:
         path: defects
@@ -22,7 +22,7 @@ resources:
     Users:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: Defects
+        TableName: ${env:DYNAMO_TABLE}
         AttributeDefinitions:
         - AttributeName: imNumber
           AttributeType: N
@@ -44,5 +44,5 @@ custom:
     seed:
       defects:
         sources:
-        - table: Defects
+        - table: ${env:DYNAMO_TABLE}
           sources: [./offline/migrations/defects.json]

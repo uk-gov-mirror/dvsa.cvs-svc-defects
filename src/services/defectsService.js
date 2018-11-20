@@ -13,7 +13,7 @@ const dbClient = new AWS.DynamoDB.DocumentClient(
  */
 const getDefectList = () => {
   const params = {
-    TableName: 'Defects'
+    TableName: process.env.DYNAMO_TABLE || 'Defects'
   }
 
   return dbClient.scan(params)
