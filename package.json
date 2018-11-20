@@ -6,8 +6,8 @@
   "scripts": {
     "start": "npm run eslint && IS_OFFLINE=${IS_OFFLINE:-true} DYNAMO_PORT=${DYNAMO_PORT:-8000} SERVERLESS_PORT=${SERVERLESS_PORT:-3000} ./node_modules/serverless/bin/serverless offline start",
     "debug": "export SLS_DEBUG=* && node --inspect ./node_modules/serverless/bin/serverless offline start",
-    "test": "IS_OFFLINE=${IS_OFFLINE:-true} DYNAMO_PORT=${DYNAMO_PORT:-8000} SERVERLESS_PORT=${SERVERLESS_PORT:-3000} node_modules/.bin/mocha tests/**/*.unitTest.js",
-    "test-i": "IS_OFFLINE=${IS_OFFLINE:-true} DYNAMO_PORT=${DYNAMO_PORT:-8000} SERVERLESS_PORT=${SERVERLESS_PORT:-3000} node_modules/.bin/mocha tests/**/*.intTest.js",
+    "test": "IS_OFFLINE=${IS_OFFLINE:-true} DYNAMO_PORT=${DYNAMO_PORT:-8000} SERVERLESS_PORT=${SERVERLESS_PORT:-3000} node_modules/.bin/mocha src/tests/**/*.unitTest.js",
+    "test-i": "IS_OFFLINE=${IS_OFFLINE:-true} DYNAMO_PORT=${DYNAMO_PORT:-8000} SERVERLESS_PORT=${SERVERLESS_PORT:-3000} node_modules/.bin/mocha src/tests/**/*.intTest.js",
     "dynamodb": "sls dynamodb start",
     "prepush": "IS_OFFLINE=${IS_OFFLINE:-true} DYNAMO_PORT=${DYNAMO_PORT:-8000} SERVERLESS_PORT=${SERVERLESS_PORT:-3000} npm test && npm run eslint",
     "predeploy": "npm install && npm run prepush",
