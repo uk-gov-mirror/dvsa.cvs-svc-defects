@@ -1,6 +1,5 @@
 const config = {
   ENV: process.env.ENV,
-  COMPONENT: process.env.COMPONENT,
   OFFLINE: {
     SERVERLESS_PORT: 3000,
     DYNAMODB_REGION: 'localhost',
