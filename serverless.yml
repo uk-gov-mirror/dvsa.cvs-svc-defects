@@ -22,7 +22,7 @@ resources:
     Users:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: ${env:DYNAMO_TABLE}
+        TableName: cvs-${env:ENV}-defects
         AttributeDefinitions:
         - AttributeName: imNumber
           AttributeType: N
@@ -34,15 +34,15 @@ resources:
           WriteCapacityUnits: 1
 custom:
   serverless-offline:
-    port: ${env:SERVERLESS_PORT}
+    port: 3000
   dynamodb:
     start:
-      port: ${env:DYNAMO_PORT}
+      port: 8000
       inMemory: true
       migrate: true
-      seed: true
+      seed: false
     seed:
       defects:
         sources:
-        - table: ${env:DYNAMO_TABLE}
-          sources: [./offline/migrations/defects.json]
+        - table: cvs-${env:ENV}-defects
+          sources: [./tests/resources/defects.json]
