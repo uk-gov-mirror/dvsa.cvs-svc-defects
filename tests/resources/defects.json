@@ -1,6 +1,6 @@
 [
   {
-    "imNumber": "1",
+    "imNumber": 1,
     "imDescription": "Registration Plate",
     "forVehicleType": [
       "PSV",
@@ -109,7 +109,7 @@
     ]
   },
   {
-    "imNumber": "3",
+    "imNumber": 3,
     "imDescription": "Seat Belts & Supplementary Restraint Systems",
     "forVehicleType": [
       "PSV",
@@ -373,7 +373,7 @@
         "deficiencies": [
           {
             "ref": "3.5.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Major",
             "deficiencyText": "such that failure is likely.",
@@ -497,7 +497,7 @@
         "deficiencies": [
           {
             "ref": "3.9.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Major",
             "deficiencyText": "indicates any kind of failure of the system.",
@@ -512,7 +512,7 @@
     ]
   },
   {
-    "imNumber": "5",
+    "imNumber": 5,
     "imDescription": "Exhaust Emissions",
     "forVehicleType": [
       "PSV",
@@ -646,7 +646,7 @@
         "deficiencies": [
           {
             "ref": "5.3.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Major",
             "deficiencyText": "absent, or obviously defective or shows any signs of obvious tampering.",
@@ -666,7 +666,7 @@
         "deficiencies": [
           {
             "ref": "5.4.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Major",
             "deficiencyText": "shows any visible signs of smoke.",
@@ -686,7 +686,7 @@
         "deficiencies": [
           {
             "ref": "5.5.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Major",
             "deficiencyText": "inoperative or indicating a malfunction.",
@@ -700,7 +700,7 @@
     ]
   },
   {
-    "imNumber": "6",
+    "imNumber": 6,
     "imDescription": "Road Wheels and Hubs",
     "forVehicleType": [
       "PSV",
@@ -999,7 +999,7 @@
     ]
   },
   {
-    "imNumber": "7",
+    "imNumber": 7,
     "imDescription": "Size and Type of Tyres",
     "forVehicleType": [
       "HGV",
@@ -1149,7 +1149,7 @@
         "deficiencies": [
           {
             "ref": "7.2.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Dangerous",
             "deficiencyText": "a combination of tyres with structures which are not shown as acceptable in the table.",
@@ -1164,7 +1164,7 @@
     ]
   },
   {
-    "imNumber": "8",
+    "imNumber": 8,
     "imDescription": "Condition of Tyres",
     "forVehicleType": [
       "PSV",
@@ -1387,7 +1387,7 @@
     ]
   },
   {
-    "imNumber": "9",
+    "imNumber": 9,
     "imDescription": "Sideguards, Rear Under-Run Devices & Bumper Bars",
     "forVehicleType": [
       "HGV",
@@ -1469,7 +1469,7 @@
         "deficiencies": [
           {
             "ref": "9.2.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Major",
             "deficiencyText": "to a vehicle required to have them fitted.",
@@ -1609,7 +1609,7 @@
         "deficiencies": [
           {
             "ref": "9.4.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Major",
             "deficiencyText": "not fitted to a vehicle required to have one fitted.",
@@ -1742,7 +1742,7 @@
     ]
   },
   {
-    "imNumber": "10",
+    "imNumber": 10,
     "imDescription": "Spare Wheel & Carrier",
     "forVehicleType": [
       "PSV",
@@ -1777,7 +1777,7 @@
         "deficiencies": [
           {
             "ref": "10.1..i",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": "i",
             "deficiencyCategory": "Minor",
             "deficiencyText": "not in proper condition.",
@@ -1827,7 +1827,7 @@
         "deficiencies": [
           {
             "ref": "10.2..I",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": "I",
             "deficiencyCategory": "Major",
             "deficiencyText": "insecure or incorrectly positioned but not so that it is likely to fall from the vehicle.",
@@ -1855,7 +1855,7 @@
     ]
   },
   {
-    "imNumber": "11",
+    "imNumber": 11,
     "imDescription": "Vehicle to Trailer Coupling",
     "forVehicleType": [
       "HGV",
@@ -2177,7 +2177,7 @@
     ]
   },
   {
-    "imNumber": "12",
+    "imNumber": 12,
     "imDescription": "Trailer Parking and Emergency Brakes and Air Line Connections",
     "forVehicleType": [
       "HGV",
@@ -2229,7 +2229,7 @@
         "deficiencies": [
           {
             "ref": "12.4.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Major",
             "deficiencyText": "fitted with a manual shut off tap.",
@@ -2251,7 +2251,7 @@
         "deficiencies": [
           {
             "ref": "12.5..i",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": "i",
             "deficiencyCategory": "Minor",
             "deficiencyText": "insecure, inadequately mounted or defective.",
@@ -2278,7 +2278,7 @@
     ]
   },
   {
-    "imNumber": "14",
+    "imNumber": 14,
     "imDescription": "Spray Suppression, Wings and Wheel Arches",
     "forVehicleType": [
       "HGV",
@@ -2483,7 +2483,7 @@
     ]
   },
   {
-    "imNumber": "15",
+    "imNumber": 15,
     "imDescription": "Cab Security",
     "forVehicleType": [
       "HGV"
@@ -2579,7 +2579,7 @@
     ]
   },
   {
-    "imNumber": "16",
+    "imNumber": 16,
     "imDescription": "Cab Doors",
     "forVehicleType": [
       "HGV"
@@ -2661,7 +2661,7 @@
     ]
   },
   {
-    "imNumber": "17",
+    "imNumber": 17,
     "imDescription": "Cab Floor and Steps",
     "forVehicleType": [
       "HGV"
@@ -2692,7 +2692,7 @@
         "deficiencies": [
           {
             "ref": "17.1..i",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": "i",
             "deficiencyCategory": "Major",
             "deficiencyText": "which is badly deteriorated or insecure.",
@@ -2723,7 +2723,7 @@
         "deficiencies": [
           {
             "ref": "17.2..i",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": "i",
             "deficiencyCategory": "Minor",
             "deficiencyText": "insecure.",
@@ -2748,7 +2748,7 @@
     ]
   },
   {
-    "imNumber": "18",
+    "imNumber": 18,
     "imDescription": "Seats",
     "forVehicleType": [
       "HGV"
@@ -2821,7 +2821,7 @@
         "deficiencies": [
           {
             "ref": "18.2.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Major",
             "deficiencyText": "insecure or a backrest that cannot be secured in the upright position.",
@@ -2835,7 +2835,7 @@
     ]
   },
   {
-    "imNumber": "19",
+    "imNumber": 19,
     "imDescription": "Security of Body, Containers and Crane Support Legs",
     "forVehicleType": [
       "HGV",
@@ -2921,7 +2921,7 @@
         "deficiencies": [
           {
             "ref": "19.2..i",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": "i",
             "deficiencyCategory": "Major",
             "deficiencyText": "seriously weakend.",
@@ -3098,7 +3098,7 @@
     ]
   },
   {
-    "imNumber": "20",
+    "imNumber": 20,
     "imDescription": "Condition of Body",
     "forVehicleType": [
       "HGV",
@@ -3196,7 +3196,7 @@
         "deficiencies": [
           {
             "ref": "20.2..i",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": "i",
             "deficiencyCategory": "Major",
             "deficiencyText": "which poses a risk to other road users.",
@@ -3230,7 +3230,7 @@
         "deficiencies": [
           {
             "ref": "20.3.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Dangerous",
             "deficiencyText": "so obviously insecure that it is likely to become detached.",
@@ -3245,7 +3245,7 @@
     ]
   },
   {
-    "imNumber": "22",
+    "imNumber": 22,
     "imDescription": "Mirrors and Indirect Vision Devices",
     "forVehicleType": [
       "PSV",
@@ -3282,7 +3282,7 @@
         "deficiencies": [
           {
             "ref": "22.1.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Major",
             "deficiencyText": "of mirror, or other indirect vision device.",
@@ -3303,7 +3303,7 @@
         "deficiencies": [
           {
             "ref": "22.2.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Major",
             "deficiencyText": "is fitted less than 2 metres from the ground.",
@@ -3323,7 +3323,7 @@
         "deficiencies": [
           {
             "ref": "22.3..i",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": "i",
             "deficiencyCategory": "Minor",
             "deficiencyText": "with minor damage that does not obviously interfere with the view to the rear or nearside or front where required of anyone sitting in the driving seats.",
@@ -3354,7 +3354,7 @@
         "deficiencies": [
           {
             "ref": "22.4.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Major",
             "deficiencyText": "insecure or structurally deteriorated.",
@@ -3368,7 +3368,7 @@
     ]
   },
   {
-    "imNumber": "23",
+    "imNumber": 23,
     "imDescription": "Glass and View of the Road",
     "forVehicleType": [
       "PSV",
@@ -3520,7 +3520,7 @@
     ]
   },
   {
-    "imNumber": "25",
+    "imNumber": 25,
     "imDescription": "Windscreen Wipers and Washers",
     "forVehicleType": [
       "PSV",
@@ -3557,7 +3557,7 @@
         "deficiencies": [
           {
             "ref": "25.1.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Minor",
             "deficiencyText": "missing or defective.",
@@ -3625,7 +3625,7 @@
         "deficiencies": [
           {
             "ref": "25.3.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Major",
             "deficiencyText": "not working or not providing sufficient fluid to clear the windscreen.",
@@ -3640,7 +3640,7 @@
     ]
   },
   {
-    "imNumber": "26",
+    "imNumber": 26,
     "imDescription": "Speedometer/Tachograph",
     "forVehicleType": [
       "PSV",
@@ -3910,7 +3910,7 @@
     ]
   },
   {
-    "imNumber": "27",
+    "imNumber": 27,
     "imDescription": "Horn",
     "forVehicleType": [
       "PSV",
@@ -4040,7 +4040,7 @@
     ]
   },
   {
-    "imNumber": "28",
+    "imNumber": 28,
     "imDescription": "Driving Controls",
     "forVehicleType": [
       "PSV",
@@ -4239,7 +4239,7 @@
         "deficiencies": [
           {
             "ref": "28.2.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Major",
             "deficiencyText": "missing or inoperative.",
@@ -4254,7 +4254,7 @@
     ]
   },
   {
-    "imNumber": "30",
+    "imNumber": 30,
     "imDescription": "Steering Control",
     "forVehicleType": [
       "PSV",
@@ -4522,7 +4522,7 @@
         "deficiencies": [
           {
             "ref": "30.3..i",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": "i",
             "deficiencyCategory": "Major",
             "deficiencyText": "which is outside the prescribed limits.",
@@ -4549,7 +4549,7 @@
     ]
   },
   {
-    "imNumber": "33",
+    "imNumber": 33,
     "imDescription": "Speed Limiter",
     "forVehicleType": [
       "PSV",
@@ -4765,7 +4765,7 @@
     ]
   },
   {
-    "imNumber": "34",
+    "imNumber": 34,
     "imDescription": "Pressure/Vacuum Warning and Build Up",
     "forVehicleType": [
       "PSV",
@@ -4832,7 +4832,7 @@
         "deficiencies": [
           {
             "ref": "34.2..i",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": "i",
             "deficiencyCategory": "Major",
             "deficiencyText": "to give at least four fully assisted brake applications after the warning device has indicated minimum effective working conditions.",
@@ -4865,7 +4865,7 @@
         "deficiencies": [
           {
             "ref": "34.3.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Major",
             "deficiencyText": "is more than 3 minutes for pressure systems and 1 minute for vacuum systems (6 minutes for type approved vehicles designed to draw a trailer).",
@@ -4879,7 +4879,7 @@
     ]
   },
   {
-    "imNumber": "36",
+    "imNumber": 36,
     "imDescription": "Hand Lever Operating Mechanical Brakes and Electronic Park brake Control",
     "forVehicleType": [
       "PSV",
@@ -5088,7 +5088,7 @@
         "deficiencies": [
           {
             "ref": "36.3.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Major",
             "deficiencyText": "missing or insecure.",
@@ -5137,7 +5137,7 @@
     ]
   },
   {
-    "imNumber": "37",
+    "imNumber": 37,
     "imDescription": "Service Brake Pedal",
     "forVehicleType": [
       "PSV",
@@ -5290,7 +5290,7 @@
     ]
   },
   {
-    "imNumber": "38",
+    "imNumber": 38,
     "imDescription": "Service Brake Operation",
     "forVehicleType": [
       "PSV",
@@ -5323,7 +5323,7 @@
         "deficiencies": [
           {
             "ref": "38.1.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Major",
             "deficiencyText": "drops when pedal depressed indicating a leak in the system.",
@@ -5379,7 +5379,7 @@
         "deficiencies": [
           {
             "ref": "38.3..i",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": "i",
             "deficiencyCategory": "Major",
             "deficiencyText": "defective or ineffective.",
@@ -5413,7 +5413,7 @@
         "deficiencies": [
           {
             "ref": "38.4.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Major",
             "deficiencyText": "pressure is not maintained for 10 minutes when the brakes are off and the engine is stopped.",
@@ -5553,7 +5553,7 @@
         "deficiencies": [
           {
             "ref": "38.7.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Major",
             "deficiencyText": "an ISO 7368 connecting lead not fitted or being used.",
@@ -5574,7 +5574,7 @@
         "deficiencies": [
           {
             "ref": "38.8.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Major",
             "deficiencyText": "not fitted to a vehicle or trailer where it is a mandatory requirement.",
@@ -5589,7 +5589,7 @@
     ]
   },
   {
-    "imNumber": "39",
+    "imNumber": 39,
     "imDescription": "Hand Operated Brake Control Valves",
     "forVehicleType": [
       "PSV",
@@ -5715,7 +5715,7 @@
     ]
   },
   {
-    "imNumber": "41",
+    "imNumber": 41,
     "imDescription": "Condition of Chassis",
     "forVehicleType": [
       "HGV",
@@ -5881,7 +5881,7 @@
     ]
   },
   {
-    "imNumber": "42",
+    "imNumber": 42,
     "imDescription": "Electrical Wiring and Equipment",
     "forVehicleType": [
       "PSV",
@@ -6160,7 +6160,7 @@
     ]
   },
   {
-    "imNumber": "43",
+    "imNumber": 43,
     "imDescription": "Engine and Transmission Mountings",
     "forVehicleType": [
       "PSV",
@@ -6275,7 +6275,7 @@
     ]
   },
   {
-    "imNumber": "44",
+    "imNumber": 44,
     "imDescription": "Oil Leaks",
     "forVehicleType": [
       "HGV",
@@ -6308,7 +6308,7 @@
         "deficiencies": [
           {
             "ref": "44.1..i",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": "i",
             "deficiencyCategory": "Major",
             "deficiencyText": "oil at a rate in excess of a 75mm diameter pool in 5 minutes or a number of leaks which collectively would deposit oil in excess of this.",
@@ -6335,7 +6335,7 @@
     ]
   },
   {
-    "imNumber": "45",
+    "imNumber": 45,
     "imDescription": "Fuel Tanks and System",
     "forVehicleType": [
       "PSV",
@@ -6535,7 +6535,7 @@
     ]
   },
   {
-    "imNumber": "46",
+    "imNumber": 46,
     "imDescription": "Exhaust Systems and Nuisance",
     "forVehicleType": [
       "PSV",
@@ -6681,7 +6681,7 @@
         "deficiencies": [
           {
             "ref": "46.3..i",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": "i",
             "deficiencyCategory": "Major",
             "deficiencyText": "insecure.",
@@ -6708,7 +6708,7 @@
     ]
   },
   {
-    "imNumber": "48",
+    "imNumber": 48,
     "imDescription": "Suspension",
     "forVehicleType": [
       "PSV",
@@ -7496,7 +7496,7 @@
     ]
   },
   {
-    "imNumber": "53",
+    "imNumber": 53,
     "imDescription": "Axles, Stub Axles and Wheel Bearings",
     "forVehicleType": [
       "PSV",
@@ -7748,7 +7748,7 @@
         "deficiencies": [
           {
             "ref": "53.4..i",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": "i",
             "deficiencyCategory": "Major",
             "deficiencyText": "with excessive free play.",
@@ -7777,7 +7777,7 @@
     ]
   },
   {
-    "imNumber": "54",
+    "imNumber": 54,
     "imDescription": "Steering",
     "forVehicleType": [
       "PSV",
@@ -8572,7 +8572,7 @@
     ]
   },
   {
-    "imNumber": "57",
+    "imNumber": 57,
     "imDescription": "Transmission",
     "forVehicleType": [
       "PSV",
@@ -8904,7 +8904,7 @@
     ]
   },
   {
-    "imNumber": "58",
+    "imNumber": 58,
     "imDescription": "Additional Braking Devices",
     "forVehicleType": [
       "PSV",
@@ -9000,7 +9000,7 @@
     ]
   },
   {
-    "imNumber": "59",
+    "imNumber": 59,
     "imDescription": "Brake Systems and Components",
     "forVehicleType": [
       "PSV",
@@ -9787,7 +9787,7 @@
         "deficiencies": [
           {
             "ref": "59.6.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Minor",
             "deficiencyText": "missing or illegible.",
@@ -9847,7 +9847,7 @@
         "deficiencies": [
           {
             "ref": "59.8.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Major",
             "deficiencyText": "defective in operation.",
@@ -9869,7 +9869,7 @@
         "deficiencies": [
           {
             "ref": "59.9..i",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": "i",
             "deficiencyCategory": "Major",
             "deficiencyText": "modification to any part of the braking system.",
@@ -9896,7 +9896,7 @@
     ]
   },
   {
-    "imNumber": "62",
+    "imNumber": 62,
     "imDescription": "Markers and Reflectors",
     "forVehicleType": [
       "HGV",
@@ -10080,7 +10080,7 @@
     ]
   },
   {
-    "imNumber": "63",
+    "imNumber": 63,
     "imDescription": "Lamps",
     "forVehicleType": [
       "PSV",
@@ -10329,7 +10329,7 @@
         "deficiencies": [
           {
             "ref": "63.3.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Dangerous",
             "deficiencyText": "show a steady red light when the brakes are applied, or all lamps do not go out when the brakes are released.",
@@ -10447,7 +10447,7 @@
         "deficiencies": [
           {
             "ref": "63.5.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Major",
             "deficiencyText": "throws direct light to the rear.",
@@ -10470,7 +10470,7 @@
         "deficiencies": [
           {
             "ref": "63.6.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Major",
             "deficiencyText": "inoperative.",
@@ -10567,7 +10567,7 @@
     ]
   },
   {
-    "imNumber": "66",
+    "imNumber": 66,
     "imDescription": "Direction Indicators and Hazard Warning Lamps",
     "forVehicleType": [
       "HGV",
@@ -10762,7 +10762,7 @@
     ]
   },
   {
-    "imNumber": "67",
+    "imNumber": 67,
     "imDescription": "Aim of Headlamps",
     "forVehicleType": [
       "PSV",
@@ -10839,7 +10839,7 @@
         "deficiencies": [
           {
             "ref": "67.2.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Major",
             "deficiencyText": "a “Kick up” that is not visible on the screen",
@@ -10861,7 +10861,7 @@
         "deficiencies": [
           {
             "ref": "67.3.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Major",
             "deficiencyText": "shows in the zone formed by the 0% vertical and 0.5% horizontal lines.",
@@ -10883,7 +10883,7 @@
         "deficiencies": [
           {
             "ref": "67.4.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Major",
             "deficiencyText": "All headlamp heights, Upper limit: All vehicles. 0%, Lower limit: All vehicles 4.0%",
@@ -10905,7 +10905,7 @@
         "deficiencies": [
           {
             "ref": "67.5.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Major",
             "deficiencyText": "is to the right of the vertical 0% line, or more than 2% to the left of it.",
@@ -10927,7 +10927,7 @@
         "deficiencies": [
           {
             "ref": "67.6.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Major",
             "deficiencyText": "dips to the right.",
@@ -10983,7 +10983,7 @@
         "deficiencies": [
           {
             "ref": "67.8.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Major",
             "deficiencyText": "is to the right of the vertical 0% line or more than 2% to the left of it.",
@@ -11005,7 +11005,7 @@
         "deficiencies": [
           {
             "ref": "67.9.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Major",
             "deficiencyText": "dips to the right.",
@@ -11020,7 +11020,7 @@
     ]
   },
   {
-    "imNumber": "71",
+    "imNumber": 71,
     "imDescription": "Service Brake Performance",
     "forVehicleType": [
       "PSV",
@@ -11210,7 +11210,7 @@
     ]
   },
   {
-    "imNumber": "72",
+    "imNumber": 72,
     "imDescription": "Secondary Brake Performance",
     "forVehicleType": [
       "PSV",
@@ -11355,7 +11355,7 @@
     ]
   },
   {
-    "imNumber": "73",
+    "imNumber": 73,
     "imDescription": "Parking Brake Performance",
     "forVehicleType": [
       "PSV",
@@ -11481,7 +11481,7 @@
     ]
   },
   {
-    "imNumber": "74",
+    "imNumber": 74,
     "imDescription": "Other Dangerous Defects",
     "forVehicleType": [
       "HGV",
@@ -11514,7 +11514,7 @@
         "deficiencies": [
           {
             "ref": "74.1.",
-            "deficiencyId": "",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "Dangerous",
             "deficiencyText": "the use of the vehicle or trailer on the road would involve an immediate danger of injury to any person.",
