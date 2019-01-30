@@ -4,20 +4,28 @@ const url = 'http://localhost:3001/'
 const request = supertest(url)
 const DefectsService = require('../../src/services/DefectsService')
 const DefectsDAO = require('../../src/models/DefectsDAO')
-var _ = require('lodash/core')
 
 describe('defects', () => {
   describe('getDefects', () => {
     context('when database is populated', () => {
-      var defectsService = null
-      var mockData = null
-      var defectsDAO = null
+      let defectsService = null
+      let defectsData = require('../resources/defects.json')
+      let defectsDAO = null
 
       before((done) => {
         defectsDAO = new DefectsDAO()
         defectsService = new DefectsService(defectsDAO)
-        mockData = require('../resources/defects.json')
-        defectsService.insertDefectList(mockData)
+        let mockBuffer = defectsData.slice()
+
+        let batches = []
+        while (mockBuffer.length > 0) {
+          batches.push(mockBuffer.splice(0, 25))
+        }
+
+        batches.forEach((batch) => {
+          defectsService.insertDefectList(batch)
+        })
+
         done()
       })
 
@@ -29,14 +37,27 @@ describe('defects', () => {
             expect(res.statusCode).to.equal(200)
             expect(res.headers['access-control-allow-origin']).to.equal('*')
             expect(res.headers['access-control-allow-credentials']).to.equal('true')
-            expect(_.isEqual(mockData, res.body)).to.equal(true)
+            expect(res.body.sort((a, b) => a.imNumber - b.imNumber)).to.eql(defectsData)
             done()
           })
       })
 
       after((done) => {
-        const mockDataKeys = [1, 3]
-        defectsService.deleteDefectList(mockDataKeys)
+        let dataBuffer = defectsData
+
+        let batches = []
+        while (dataBuffer.length > 0) {
+          batches.push(dataBuffer.splice(0, 25))
+        }
+
+        batches.forEach((batch) => {
+          defectsService.deleteDefectList(
+            batch.map((item) => {
+              return item.imNumber
+            })
+          )
+        })
+
         done()
       })
     })

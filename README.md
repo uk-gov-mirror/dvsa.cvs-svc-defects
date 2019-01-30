@@ -32,18 +32,20 @@ These will be run as part of prepush so please make sure you set up the git hook
 ### DynamoDB
 If you want the database to be populated with mock data on start, in your `serverless.yml` file, you need to set `seed` to `true`. You can find this setting under `custom > dynamodb > start`.
 
+By default, the `noStart` setting under `custom > dynamodb > start` is true. That means the DynamoDB instance will not be started automatically. To start the instance automatically on `npm run start`, you have to set this value to `false`.
+
 If you choose to run the DynamoDB instance separately, you can send the seed command with the following command:
 
-```sls dynamodb seed --seed=seed_name```
+```sls dynamodb seed --seed=defects```
 
 Under `custom > dynamodb > seed` you can define new seed operations with the following config:
 ```
 custom:
     dynamodb:
         seed:
-          seed_name:
+          [SEED NAME HERE]:
             sources:
-            - table: TABLE_TO_SEED
+            - table: [TABLE TO SEED]
               sources: [./path/to/resource.json]
 ```
 
