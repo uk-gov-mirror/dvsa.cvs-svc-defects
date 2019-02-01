@@ -41,6 +41,9 @@ podTemplate(label: label, containers: [
 
                 sh "sls dynamodb seed --seed=defects"
             }
+            stage ("sonar") {
+                sh "npm run sonar-scanner"
+            }
 
             stage ("unit test") {
                 sh "npm run test"
