@@ -12,7 +12,11 @@ podTemplate(label: label, containers: [
         }
 
         container('node'){
-            LBRANCH=BRANCH.toLowerCase()
+            
+            withFolderProperties{
+                LBRANCH="${env.BRANCH}".toLowerCase()
+            }
+            
             stage ("npm deps") {
                 sh "npm install"
             }
