@@ -65,7 +65,7 @@ podTemplate(label: label, containers: [
                 sh "cp -r src/* ${LBRANCH}/"
                 sh "cp -r node_modules ${LBRANCH}/node_modules"
                 sh "cd ${LBRANCH} && zip -qr ../${LBRANCH}.zip *"
-                sh "echo sha256sum ${LBRANCH}.zip > ${LBRANCH}.sha256 && aws s3 cp ${LBRANCH}.sha256 s3://cvs-services/test-stations/${LBRANCH}.sha256"
+                
             }
 
             stage("upload to s3") {
@@ -75,6 +75,8 @@ podTemplate(label: label, containers: [
                        secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
 
                 sh "aws s3 cp ${LBRANCH}.zip s3://cvs-services/defects/${LBRANCH}.zip"
+                sh "echo sha256sum ${LBRANCH}.zip > ${LBRANCH}.sha256 && aws s3 cp ${LBRANCH}.sha256 s3://cvs-services/defects/${LBRANCH}.sha256"
+
                 }
             }
         }
