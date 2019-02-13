@@ -8,6 +8,9 @@ podTemplate(label: label, containers: [
         }
         
         container('node'){    
+            withFolderProperties{
+                LBRANCH="${env.BRANCH}".toLowerCase()
+            }    
             
             sh "cp -r /tmp/seed ."
             
@@ -25,8 +28,8 @@ podTemplate(label: label, containers: [
                 
                 stage ("delete-table") {
     
-                    sh "aws dynamodb delete-table --table-name cvs-${BRANCH}-defects --region=eu-west-1 || true"
-                    sh "aws dynamodb wait table-not-exists --table-name cvs-${BRANCH}-defects --region=eu-west-1"
+                    sh "aws dynamodb delete-table --table-name cvs-${LBRANCH}-defects --region=eu-west-1 || true"
+                    sh "aws dynamodb wait table-not-exists --table-name cvs-${LBRANCH}-defects --region=eu-west-1"
 
                 }
                 
@@ -40,12 +43,12 @@ podTemplate(label: label, containers: [
                         --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 \
                         --region=eu-west-1
                         '''
-                    sh "aws dynamodb wait table-exists --table-name cvs-${BRANCH}-defects --region=eu-west-1"
+                    sh "aws dynamodb wait table-exists --table-name cvs-${LBRANCH}-defects --region=eu-west-1"
 
                 }
                 
                 stage ("seed-table") {
-                        sh "./seed.js cvs-${BRANCH}-defects ../tests/resources/defects.json"
+                        sh "./seed.js cvs-${LBRANCH}-defects ../tests/resources/defects.json"
                 }
             }
         }
