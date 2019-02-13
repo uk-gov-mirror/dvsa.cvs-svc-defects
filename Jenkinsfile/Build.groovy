@@ -1,7 +1,7 @@
 def label = "jenkins-node-${UUID.randomUUID().toString()}"
 podTemplate(label: label, containers: [
     containerTemplate(name: 'dynamodb',
-                      image: 'amazon/dynamodb-local',
+                      image: '086658912680.dkr.ecr.eu-west-1.amazonaws.com/cvs/dynamodb-local:latest',
                       command: 'java -jar /home/dynamodblocal/DynamoDBLocal.jar -inMemory -sharedDb -port 8001',
                       ports: [portMapping(name: 'dynamoport', containerPort: 8001, hostPort: 8001)]),
     containerTemplate(name: 'node', image: '086658912680.dkr.ecr.eu-west-1.amazonaws.com/cvs/nodejs-builder:latest', ttyEnabled: true, alwaysPullImage: true, command: 'cat'),]){
