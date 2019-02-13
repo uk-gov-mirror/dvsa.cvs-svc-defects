@@ -34,15 +34,15 @@ podTemplate(label: label, containers: [
                 }
                 
                 stage ("create-table") {
-                    sh '''
+                    sh """
                         aws dynamodb create-table \
-                        --table-name cvs-test-defects \
+                        --table-name cvs-${LBRANCH}-defects \
                         --attribute-definitions \
                             AttributeName=imNumber,AttributeType=N \
                         --key-schema AttributeName=imNumber,KeyType=HASH \
                         --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 \
                         --region=eu-west-1
-                        '''
+                        """
                     sh "aws dynamodb wait table-exists --table-name cvs-${LBRANCH}-defects --region=eu-west-1"
 
                 }
