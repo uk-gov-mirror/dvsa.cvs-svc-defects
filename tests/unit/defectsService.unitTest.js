@@ -8,7 +8,7 @@ describe('getDefectList', () => {
 
   context('when db call returns data', () => {
     it('should return a populated response', () => {
-      defectsDAOMock.defectRecordsMock = { item: 'testItem' }
+      defectsDAOMock.defectRecordsMock = [{ imNumber: '1' }]
       defectsDAOMock.numberOfrecords = 1
       defectsDAOMock.numberOfScannedRecords = 1
       var defectsService = new DefectsService(defectsDAOMock)
@@ -17,7 +17,7 @@ describe('getDefectList', () => {
         .then((returnedRecords) => {
           expect(returnedRecords).to.not.equal(undefined)
           expect(returnedRecords).to.not.equal({})
-          expect(returnedRecords).to.equal(defectsDAOMock.defectRecordsMock)
+          expect(returnedRecords).to.eql(defectsDAOMock.defectRecordsMock)
           expect(returnedRecords.length).to.be.equal(defectsDAOMock.defectRecordsMock.length)
         })
     })

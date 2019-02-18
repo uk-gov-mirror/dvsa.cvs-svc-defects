@@ -39,10 +39,10 @@ resources:
       Properties:
         TableName: cvs-local-defects
         AttributeDefinitions:
-        - AttributeName: imNumber
+        - AttributeName: id
           AttributeType: N
         KeySchema:
-        - AttributeName: imNumber
+        - AttributeName: id
           KeyType: HASH
         ProvisionedThroughput:
           ReadCapacityUnits: 1
