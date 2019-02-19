@@ -37,14 +37,19 @@ podTemplate(label: label, containers: [
                     sh """
                         aws dynamodb create-table \
                         --table-name cvs-${LBRANCH}-defects \
-                        --tags Key=is_managed,Value=true \
                         --attribute-definitions \
                             AttributeName=id,AttributeType=N \
                         --key-schema AttributeName=id,KeyType=HASH \
                         --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 \
                         --region=eu-west-1
                         """
-                    sh "aws dynamodb wait table-exists --table-name cvs-${LBRANCH}-defects --region=eu-west-1"
+                    sh "sleep 10"
+                    sh """aws dynamodb tag-resource \
+                        --resource-arn arn:aws:dynamodb:eu-west-1:006106226016:table/cvs-${LBRANCH}-defects \
+                        --tags Key=is_managed,Value=true \
+                        --region=eu-west-1
+                        """
+                    sh """aws dynamodb wait table-exists --table-name cvs-${LBRANCH}-defects --region=eu-west-1"""
 
                 }
                 
