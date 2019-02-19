@@ -13,8 +13,16 @@ class DefectsService {
   getDefectList () {
     return this.defectsDAO.getAll()
       .then(data => {
-        if (data.Count === 0) { throw new HTTPError(404, 'No resources match the search criteria.') }
+        if (data.Count === 0) {
+          throw new HTTPError(404, 'No resources match the search criteria.')
+        }
+
         return data.Items
+          .map((defect) => {
+            delete defect.id
+            return defect
+          })
+          .sort((first, second) => first.imNumber - second.imNumber)
       })
       .catch(error => {
         if (!(error instanceof HTTPError)) {
