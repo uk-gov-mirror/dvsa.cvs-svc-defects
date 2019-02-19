@@ -37,6 +37,7 @@ podTemplate(label: label, containers: [
                     sh """
                         aws dynamodb create-table \
                         --table-name cvs-${LBRANCH}-defects \
+                        --tags Key=is_managed,Value=true \
                         --attribute-definitions \
                             AttributeName=id,AttributeType=N \
                         --key-schema AttributeName=id,KeyType=HASH \
