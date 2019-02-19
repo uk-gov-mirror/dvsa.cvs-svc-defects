@@ -38,8 +38,8 @@ podTemplate(label: label, containers: [
                 aws dynamodb create-table \
                 --table-name cvs-local-defects \
                 --attribute-definitions \
-                    AttributeName=imNumber,AttributeType=N \
-                --key-schema AttributeName=imNumber,KeyType=HASH \
+                    AttributeName=id,AttributeType=N \
+                --key-schema AttributeName=id,KeyType=HASH \
                 --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 --region=eu-west-1 --endpoint-url http://localhost:8001
                 '''
 
@@ -51,7 +51,7 @@ podTemplate(label: label, containers: [
 
             stage ("unit test") {
                 sh "npm run test"
-            }
+            } 
 
             stage ("integration test") {
                 sh "BRANCH=local node_modules/gulp/bin/gulp.js start-serverless"
