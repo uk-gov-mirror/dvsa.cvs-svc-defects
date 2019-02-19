@@ -38,8 +38,8 @@ podTemplate(label: label, containers: [
                         aws dynamodb create-table \
                         --table-name cvs-${LBRANCH}-defects \
                         --attribute-definitions \
-                            AttributeName=imNumber,AttributeType=N \
-                        --key-schema AttributeName=imNumber,KeyType=HASH \
+                            AttributeName=id,AttributeType=N \
+                        --key-schema AttributeName=id,KeyType=HASH \
                         --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 \
                         --region=eu-west-1
                         """
