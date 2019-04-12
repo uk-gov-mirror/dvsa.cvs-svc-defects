@@ -6694,8 +6694,8 @@
         ],
         "deficiencies": [
           {
-            "ref": "24.9.-",
-            "deficiencyId": "-",
+            "ref": "24.9",
+            "deficiencyId": null,
             "deficiencySubId": null,
             "deficiencyCategory": "major",
             "deficiencyText": "missing, inoperative or deteriorated to the extent that the illumination is significantly reduced.",
