@@ -1,5 +1,10 @@
 service: cvs-svc-defect
 
+plugins:
+  - serverless-dynamodb-local
+  - serverless-offline
+  - serverless-plugin-tracing
+
 provider:
   name: aws
   runtime: nodejs8.10
@@ -12,10 +17,7 @@ provider:
       Resource:
         - "*"
 
-plugins:
-  - serverless-dynamodb-local
-  - serverless-offline
-  - serverless-plugin-tracing
+
 
 functions:
   getDefects:
