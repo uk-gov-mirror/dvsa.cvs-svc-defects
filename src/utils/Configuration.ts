@@ -14,7 +14,7 @@ class Configuration {
         return this.instance || (this.instance = new this());
     }
 
-    public generateConfig(): IDynamoDBConfig {
+    public generateConfig(): IDynamoDBConfig | null {
         const BRANCH = process.env.BRANCH;
         const localConfig: IDynamoDBConfig =
         {
@@ -34,6 +34,7 @@ class Configuration {
 
         if (!BRANCH) {
             console.error('Please define BRANCH environment variable')
+            return null;
         } else if (BRANCH === 'local') {
             return localConfig;
         } else {

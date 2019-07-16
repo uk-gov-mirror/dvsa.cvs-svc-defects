@@ -1,23 +1,30 @@
 import { HTTPError } from '../models/HTTPError';
 import { DefectsDAO } from '../models/DefectsDAO';
+import { Service } from '../models/injector/ServiceDecorator';
 
+@Service()
 export class DefectsService {
-    constructor(private defectsDAO: DefectsDAO) {
+    public readonly defectsDAO: DefectsDAO;
+
+    constructor( defectsDAO: DefectsDAO) {
+        this.defectsDAO = defectsDAO;
     }
 
     public getDefectList() {
         return this.defectsDAO.getAll()
-            .then(data => {
+            .then((data: any) => {
                 if (data.Count === 0) {
                     throw new HTTPError(404, 'No resources match the search criteria.')
                 }
 
                 return data.Items
-                    .map((defect) => {
+                    .map((defect: any) => {
                         delete defect.id
                         return defect
                     })
-                    .sort((first, second) => first.imNumber - second.imNumber)
+                    .sort((first: { imNumber: number; }, second: { imNumber: number; }): number => {
+                        return first.imNumber - second.imNumber;
+                    })
             })
             .catch(error => {
                 if (!(error instanceof HTTPError)) {
@@ -29,7 +36,7 @@ export class DefectsService {
             })
     }
 
-    public insertDefectList(defectItems) {
+    public insertDefectList(defectItems: any) {
         return this.defectsDAO.createMultiple(defectItems)
             .then(data => {
                 if (data.UnprocessedItems) { return data.UnprocessedItems }
@@ -42,7 +49,7 @@ export class DefectsService {
             })
     }
 
-    public deleteDefectList (defectItemKeys) {
+    public deleteDefectList (defectItemKeys: string[]) {
         return this.defectsDAO.deleteMultiple(defectItemKeys)
           .then((data) => {
             if (data.UnprocessedItems) { return data.UnprocessedItems }
