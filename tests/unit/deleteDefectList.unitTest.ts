@@ -30,9 +30,9 @@ describe('deleteDefectList', () => {
                 DefectsDAOMock.defectRecordsMock = require('../resources/defects.json');
 
                 return defectsService.deleteDefectList(DefectsDAOMock.defectRecordsMock)
-                    .then((result) => {
-                        //   expect(Object.keys(result).length).to.equal(0)
-                        //   expect(result.constructor).to.equal(Object)
+                    .then((result: any) => {
+                          expect(Object.keys(result).length).to.equal(0);
+                          expect(result.constructor).to.equal(Object);
                     });
             });
         });
