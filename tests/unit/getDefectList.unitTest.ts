@@ -37,7 +37,7 @@ describe('getDefectList', () => {
                     .then(() => {
                         expect.fail();
                     }).catch((errorResponse) => {
-                        //expect(errorResponse).to.be.instanceOf(HTTPError)
+                        expect(errorResponse).to.be.instanceOf(HTTPError)
                         expect(errorResponse.statusCode).to.equal(404)
                         expect(errorResponse.body).to.equal('No resources match the search criteria.')
                     });
@@ -74,7 +74,7 @@ describe('getDefectList', () => {
                         expect.fail();
                     })
                     .catch((errorResponse: HTTPError) => {
-                        //expect(errorResponse).to.be.instanceOf(HTTPError)
+                        expect(errorResponse).to.be.instanceOf(HTTPError)
                         expect(errorResponse.statusCode).to.be.equal(500)
                         expect(errorResponse.body).to.equal('Internal Server Error')
                     });
