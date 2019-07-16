@@ -8,10 +8,10 @@ export const getDefects: Handler = async () => {
     const defectsService = new DefectsService(defectsDAO);
 
     return defectsService.getDefectList()
-    .then((data) => {
+    .then((data: any) => {
         return new HTTPResponse(200, data);
     })
-    .catch((error) => {
+    .catch((error: any) => {
         return new HTTPResponse(error.statusCode, error.body);
     })
 }
