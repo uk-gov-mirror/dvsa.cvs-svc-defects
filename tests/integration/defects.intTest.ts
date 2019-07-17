@@ -9,15 +9,15 @@ import { Injector } from "../../src/models/injector/Injector";
 const url = "http://localhost:3004/";
 const request = supertest(url)
 
-describe('defects', () => {
+describe('Defects Service', () => {
     describe('getDefects', () => {
         context('when database is populated', () => {
             let defectsService: DefectsService;
             const defectsData = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../resources/defects.json'), 'utf8'));
-            let defectsDAO = null;
+            let defectsDAO:DefectsDAO = new DefectsDAO();
 
             before((done) => {
-                defectsService = Injector.resolve<DefectsService>(DefectsService, [DefectsDAO]);
+                defectsService =  new DefectsService(defectsDAO);
                 const mockBuffer = defectsData.slice();
 
                 let batches = []
