@@ -11,7 +11,9 @@
     "start": "npm run tslint && BRANCH=local ./node_modules/serverless/bin/serverless offline start",
     "test": "node_modules/.bin/mocha .build/tests/**/*.unitTest.js",
     "build": "node_modules/typescript/bin/tsc --rootDir ./ --outDir .build --sourceMap false && npm run build:copy",
+    "build:copy": "find src -type f \\( -name \"*.yml\" -or -name \"*.json\" \\) | cpio -pdm .build && find tests -type f \\( -name \"*.yml\" -or -name \"*.json\" \\)  | cpio -pdm .build",
     "test-i": "node_modules/.bin/mocha .build/tests/**/*.intTest.js",
+    "end:test": "node_modules/gulp/bin/gulp.js kill-serverless",
     "prepush": "BRANCH=local npm test && npm run tslint",
     "predeploy": "npm install && npm run prepush",
     "security-checks": "git secrets --scan && git log -p | scanrepo",
@@ -20,7 +22,7 @@
     "coverage": "nyc mocha .build/tests/unit/*.unitTest.js && nyc report --reporter=lcov",
     "audit-dep": "npm audit --json | audit-filter --nsp-config=.nsprc --audit=-"
   },
-    "nyc": {
+  "nyc": {
     "include": [
       "src/**/*.ts",
       "src/**/*.tsx"

@@ -41,17 +41,6 @@ export class DefectsDAO {
     public createMultiple(defectItems: any) : Promise<PromiseResult<DocumentClient.BatchWriteItemOutput, AWS.AWSError>> {
         let params = this.generatePartialParams()
 
-        // defectItems.forEach(defectItem: any => {
-        //     params.RequestItems[this.tableName].push(
-        //         {
-        //             PutRequest:
-        //             {
-        //                 Item: defectItem
-        //             }
-        //         })
-        // })
-
-        
         defectItems.map((defectItem: any) => {
             params.RequestItems[this.tableName].push(
                 {
