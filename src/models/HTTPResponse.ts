@@ -1,5 +1,5 @@
 import {APIGatewayProxyResult} from "aws-lambda";
-export class HTTPResponse extends Error implements APIGatewayProxyResult {
+export class HTTPResponse implements APIGatewayProxyResult {
   public body: any;
   public statusCode: number;
   public readonly headers: any;
@@ -11,9 +11,6 @@ export class HTTPResponse extends Error implements APIGatewayProxyResult {
    * @param headers - optional - the response headers
    */
   constructor(statusCode: number, body: any, headers = {}) {
-    super();
-
-    if (headers) { this.headers = headers; }
     this.headers["Access-Control-Allow-Origin"] = "*";
     this.headers["Access-Control-Allow-Credentials"] = true;
     this.headers["X-Content-Type-Options"] = "nosniff";
