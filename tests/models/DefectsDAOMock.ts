@@ -7,10 +7,10 @@ export class DefectsDAOMock {
     public static isDatabaseOn: boolean;
 
     constructor() {
-        DefectsDAOMock.defectRecordsMock = null
-        DefectsDAOMock.numberOfRecords = null
-        DefectsDAOMock.numberOfScannedRecords = null
-        DefectsDAOMock.isDatabaseOn = true
+        DefectsDAOMock.defectRecordsMock = null;
+        DefectsDAOMock.numberOfRecords = null;
+        DefectsDAOMock.numberOfScannedRecords = null;
+        DefectsDAOMock.isDatabaseOn = true;
     }
 
     /**
@@ -21,26 +21,26 @@ export class DefectsDAOMock {
             Items: DefectsDAOMock.defectRecordsMock,
             Count: DefectsDAOMock.numberOfRecords,
             ScannedCount: DefectsDAOMock.numberOfScannedRecords
-        }
+        };
 
-        if (!DefectsDAOMock.isDatabaseOn) { return Promise.reject(responseObject) }
+        if (!DefectsDAOMock.isDatabaseOn) { return Promise.reject(responseObject); }
 
-        return Promise.resolve(responseObject)
+        return Promise.resolve(responseObject);
     }
 
     /**
-    * Mock createMultiple function
-    */
+     * Mock createMultiple function
+     */
     public createMultiple() {
-        if (!DefectsDAOMock.isDatabaseOn) { return Promise.reject(new HTTPError(500, 'Internal Server Error')) }
-        return Promise.resolve({ UnprocessedItems: {} })
+        if (!DefectsDAOMock.isDatabaseOn) { return Promise.reject(new HTTPError(500, "Internal Server Error")); }
+        return Promise.resolve({ UnprocessedItems: {} });
     }
 
     /**
-   * Mock deleteMultiple function
-   */
+     * Mock deleteMultiple function
+     */
     public deleteMultiple() {
-        if (!DefectsDAOMock.isDatabaseOn) { return Promise.reject(new HTTPError(500, 'Internal Server Error')) }
-        return Promise.resolve({ UnprocessedItems: {} })
+        if (!DefectsDAOMock.isDatabaseOn) { return Promise.reject(new HTTPError(500, "Internal Server Error")); }
+        return Promise.resolve({ UnprocessedItems: {} });
     }
 }

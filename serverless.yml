@@ -4,6 +4,7 @@ plugins:
   - serverless-dynamodb-local
   - serverless-offline
   - serverless-plugin-tracing
+  - serverless-plugin-typescript
 
 provider:
   name: aws

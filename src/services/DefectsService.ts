@@ -1,6 +1,6 @@
-import { HTTPError } from '../models/HTTPError';
-import { DefectsDAO } from '../models/DefectsDAO';
-import { Service } from '../models/injector/ServiceDecorator';
+import { HTTPError } from "../models/HTTPError";
+import { DefectsDAO } from "../models/DefectsDAO";
+import { Service } from "../models/injector/ServiceDecorator";
 
 @Service()
 export class DefectsService {
@@ -14,51 +14,51 @@ export class DefectsService {
         return this.defectsDAO.getAll()
             .then((data: any) => {
                 if (data.Count === 0) {
-                    throw new HTTPError(404, 'No resources match the search criteria.')
+                    throw new HTTPError(404, "No resources match the search criteria.");
                 }
 
                 return data.Items
                     .map((defect: any) => {
-                        delete defect.id
-                        return defect
+                        delete defect.id;
+                        return defect;
                     })
                     .sort((first: { imNumber: number; }, second: { imNumber: number; }): number => {
                         return first.imNumber - second.imNumber;
-                    })
+                    });
             })
-            .catch(error => {
+            .catch((error) => {
                 if (!(error instanceof HTTPError)) {
-                    console.error(error)
-                    error.statusCode = 500
-                    error.body = 'Internal Server Error'
+                    console.error(error);
+                    error.statusCode = 500;
+                    error.body = "Internal Server Error";
                 }
-                throw new HTTPError(error.statusCode, error.body)
-            })
+                throw new HTTPError(error.statusCode, error.body);
+            });
     }
 
     public insertDefectList(defectItems: any) {
         return this.defectsDAO.createMultiple(defectItems)
-            .then(data => {
-                if (data.UnprocessedItems) { return data.UnprocessedItems }
+            .then((data) => {
+                if (data.UnprocessedItems) { return data.UnprocessedItems; }
             })
             .catch((error) => {
                 if (error) {
-                    console.error(error)
-                    throw new HTTPError(500, 'Internal Server Error')
+                    console.error(error);
+                    throw new HTTPError(500, "Internal Server Error");
                 }
-            })
+            });
     }
 
-    public deleteDefectList (defectItemKeys: string[]) {
+    public deleteDefectList(defectItemKeys: string[]) {
         return this.defectsDAO.deleteMultiple(defectItemKeys)
           .then((data) => {
-            if (data.UnprocessedItems) { return data.UnprocessedItems }
+            if (data.UnprocessedItems) { return data.UnprocessedItems; }
           })
           .catch((error) => {
             if (error) {
-              console.error(error)
-              throw new HTTPError(500, 'Internal ServerError')
+              console.error(error);
+              throw new HTTPError(500, "Internal ServerError");
             }
-          })
-    }   
+          });
+    }
 }
