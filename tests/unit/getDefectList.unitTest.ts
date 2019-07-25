@@ -6,12 +6,12 @@ import { HTTPError } from "../../src/models/HTTPError";
 
 
 
-describe('getDefectList', () => {
+describe("getDefectList", () => {
     describe("when database is on", () => {
-        context('when db call returns data', () => {
-            it('should return a populated response', () => {
+        context("when db call returns data", () => {
+            it("should return a populated response", () => {
                 const defectsService: DefectsService = Injector.resolve<DefectsService>(DefectsService, [DefectsDAOMock]);
-                DefectsDAOMock.defectRecordsMock = [{ imNumber: '1' }];
+                DefectsDAOMock.defectRecordsMock = [{ imNumber: "1" }];
                 DefectsDAOMock.numberOfRecords = 1;
                 DefectsDAOMock.numberOfScannedRecords = 1;
 
@@ -25,8 +25,8 @@ describe('getDefectList', () => {
             });
         });
 
-        context('when db returns empty data', () => {
-            it('should return 404-No resources match the search criteria', () => {
+        context("when db returns empty data", () => {
+            it("should return 404-No resources match the search criteria", () => {
                 const defectsService: DefectsService = Injector.resolve<DefectsService>(DefectsService, [DefectsDAOMock]);
                 DefectsDAOMock.defectRecordsMock = {};
                 DefectsDAOMock.numberOfRecords = 0;
@@ -37,15 +37,15 @@ describe('getDefectList', () => {
                     .then(() => {
                         expect.fail();
                     }).catch((errorResponse) => {
-                        expect(errorResponse).to.be.instanceOf(HTTPError)
-                        expect(errorResponse.statusCode).to.equal(404)
-                        expect(errorResponse.body).to.equal('No resources match the search criteria.')
+                        expect(errorResponse).to.be.instanceOf(HTTPError);
+                        expect(errorResponse.statusCode).to.equal(404);
+                        expect(errorResponse.body).to.equal("No resources match the search criteria.");
                     });
-            })
+            });
         });
 
-        context('when db return undefined data', () => {
-            it('should return 404-No resources match the search criteria if db return null data', () => {
+        context("when db return undefined data", () => {
+            it("should return 404-No resources match the search criteria if db return null data", () => {
                 const defectsService: DefectsService = Injector.resolve<DefectsService>(DefectsService, [DefectsDAOMock]);
                 DefectsDAOMock.defectRecordsMock = undefined;
                 DefectsDAOMock.numberOfRecords = 0;
@@ -57,15 +57,15 @@ describe('getDefectList', () => {
                     }).catch((errorResponse) => {
                         expect(errorResponse).to.be.instanceOf(HTTPError);
                         expect(errorResponse.statusCode).to.equal(404);
-                        expect(errorResponse.body).to.equal('No resources match the search criteria.');
+                        expect(errorResponse.body).to.equal("No resources match the search criteria.");
                     });
-            })
-        })
+            });
+        });
     });
 
     describe("when database is off", () => {
-        context('when db does not return response', () => {
-            it('should return 500-Internal Server Error', () => {
+        context("when db does not return response", () => {
+            it("should return 500-Internal Server Error", () => {
                 const defectsService: DefectsService = Injector.resolve<DefectsService>(DefectsService, [DefectsDAOMock]);
                 DefectsDAOMock.isDatabaseOn = false;
 
@@ -74,11 +74,11 @@ describe('getDefectList', () => {
                         expect.fail();
                     })
                     .catch((errorResponse: HTTPError) => {
-                        expect(errorResponse).to.be.instanceOf(HTTPError)
-                        expect(errorResponse.statusCode).to.be.equal(500)
-                        expect(errorResponse.body).to.equal('Internal Server Error')
+                        expect(errorResponse).to.be.instanceOf(HTTPError);
+                        expect(errorResponse.statusCode).to.be.equal(500);
+                        expect(errorResponse.body).to.equal("Internal Server Error");
                     });
-            })
+            });
         });
     });
-})
+});

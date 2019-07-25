@@ -1,5 +1,5 @@
 import { default as unwrappedAWS } from "aws-sdk";
-import { Configuration } from '../utils/Configuration';
+import { Configuration } from "../utils/Configuration";
 import { PromiseResult } from "aws-sdk/lib/request";
 import { DocumentClient } from "aws-sdk/lib/dynamodb/document_client";
 
@@ -18,15 +18,15 @@ export class DefectsDAO {
 
 
     constructor() {
-        const config: any = Configuration.Instance.generateConfig();
-        this.tableName = config.DYNAMODB_TABLE_NAME;
+        const config: any = Configuration.getInstance().getDynamoDBConfig();
+        this.tableName = config.table;
         if (!DefectsDAO.dbClient) {
             DefectsDAO.dbClient = new AWS.DynamoDB.DocumentClient(config.params);
-        }       
+        }
     }
 
     public getAll(): Promise<PromiseResult<DocumentClient.ScanOutput, AWS.AWSError>> {
-        return DefectsDAO.dbClient.scan({ TableName: this.tableName }).promise()
+        return DefectsDAO.dbClient.scan({ TableName: this.tableName }).promise();
     }
 
     public generatePartialParams(): any {
@@ -35,11 +35,11 @@ export class DefectsDAO {
             {
                 [this.tableName]: []
             }
-        }
+        };
     }
 
-    public createMultiple(defectItems: any) : Promise<PromiseResult<DocumentClient.BatchWriteItemOutput, AWS.AWSError>> {
-        let params = this.generatePartialParams()
+    public createMultiple(defectItems: any[]): Promise<any> {
+        const params = this.generatePartialParams();
 
         defectItems.map((defectItem: any) => {
             params.RequestItems[this.tableName].push(
@@ -48,16 +48,16 @@ export class DefectsDAO {
                     {
                         Item: defectItem
                     }
-                })
-        })
+                });
+        });
 
-        return DefectsDAO.dbClient.batchWrite(params).promise()
+        return DefectsDAO.dbClient.batchWrite(params).promise();
     }
 
-    public deleteMultiple(primaryKeysToBeDeleted: string[]): Promise<PromiseResult<DocumentClient.BatchWriteItemOutput, AWS.AWSError>> {
-        let params = this.generatePartialParams()
+    public deleteMultiple(primaryKeysToBeDeleted: string[]): Promise<any> {
+        const params = this.generatePartialParams();
 
-        primaryKeysToBeDeleted.forEach(key => {
+        primaryKeysToBeDeleted.forEach((key) => {
             params.RequestItems[this.tableName].push(
                 {
                     DeleteRequest:
@@ -68,9 +68,9 @@ export class DefectsDAO {
                         }
                     }
                 }
-            )
-        })
+            );
+        });
 
-        return DefectsDAO.dbClient.batchWrite(params).promise()
+        return DefectsDAO.dbClient.batchWrite(params).promise();
     }
 }
