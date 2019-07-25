@@ -1,7 +1,7 @@
-import {Handler} from 'aws-lambda';
-import {DefectsDAO} from '../models/DefectsDAO';
-import {DefectsService} from '../services/DefectsService';
-import { HTTPResponse } from '../models/HTTPResponse';
+import {Handler} from "aws-lambda";
+import {DefectsDAO} from "../models/DefectsDAO";
+import {DefectsService} from "../services/DefectsService";
+import { HTTPResponse } from "../models/HTTPResponse";
 
 export const getDefects: Handler = async () => {
     const defectsDAO = new DefectsDAO();
@@ -13,5 +13,5 @@ export const getDefects: Handler = async () => {
     })
     .catch((error: any) => {
         return new HTTPResponse(error.statusCode, error.body);
-    })
-}
+    });
+};

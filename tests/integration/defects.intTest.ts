@@ -2,25 +2,25 @@ import supertest from "supertest";
 import { expect } from "chai";
 import fs from "fs";
 import path from "path";
-import { DefectsService } from '../../src/services/DefectsService';
-import { DefectsDAO } from '../../src/models/DefectsDAO';
+import { DefectsService } from "../../src/services/DefectsService";
+import { DefectsDAO } from "../../src/models/DefectsDAO";
 import { Injector } from "../../src/models/injector/Injector";
 
-const url = "http://localhost:3004/";
-const request = supertest(url)
+const url = "http://localhost:3001/";
+const request = supertest(url);
 
-describe('Defects Service', () => {
-    describe('getDefects', () => {
-        context('when database is populated', () => {
+describe("Defects Service", () => {
+    describe("getDefects", () => {
+        context("when database is populated", () => {
             let defectsService: DefectsService;
-            const defectsData = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../resources/defects.json'), 'utf8'));
-            let defectsDAO:DefectsDAO = new DefectsDAO();
+            const defectsData = JSON.parse(fs.readFileSync(path.resolve(__dirname, "../resources/defects.json"), "utf8"));
+            const defectsDAO: DefectsDAO = new DefectsDAO();
 
-            before((done) => {
+            beforeAll((done) => {
                 defectsService =  new DefectsService(defectsDAO);
                 const mockBuffer = defectsData.slice();
 
-                let batches = []
+                const batches = [];
                 while (mockBuffer.length > 0) {
                     batches.push(mockBuffer.splice(0, 25));
                 }
@@ -32,26 +32,26 @@ describe('Defects Service', () => {
                 done();
             });
 
-            it('should return all defects in the database', (done) => {
-                let expectedResponse = JSON.parse(JSON.stringify(defectsData)).map((defect: { id: any; }) => {
-                    delete defect.id
-                    return defect
+            it("should return all defects in the database", (done) => {
+                const expectedResponse = JSON.parse(JSON.stringify(defectsData)).map((defect: { id: any; }) => {
+                    delete defect.id;
+                    return defect;
                 })
-                    .sort((first: { imNumber: number; }, second: { imNumber: number; }) => first.imNumber - second.imNumber)
+                    .sort((first: { imNumber: number; }, second: { imNumber: number; }) => first.imNumber - second.imNumber);
 
-                request.get('defects')
+                request.get("defects")
                     .end((err: any, res: any) => {
-                        console.log()
-                        if (err) { expect.fail(err) }
-                        expect(res.statusCode).to.equal(200)
-                        expect(res.headers['access-control-allow-origin']).to.equal('*')
-                        expect(res.headers['access-control-allow-credentials']).to.equal('true')
-                        expect(res.body.length).to.equal(expectedResponse.length)
-                        done()
-                    })
+                        console.log();
+                        if (err) { expect.fail(err); }
+                        expect(res.statusCode).to.equal(200);
+                        expect(res.headers["access-control-allow-origin"]).to.equal("*");
+                        expect(res.headers["access-control-allow-credentials"]).to.equal("true");
+                        expect(res.body.length).to.equal(expectedResponse.length);
+                        done();
+                    });
             });
 
-            after((done) => {
+            afterAll((done: () => boolean) => {
                 const dataBuffer = defectsData;
 
                 const batches = Array();
@@ -62,7 +62,7 @@ describe('Defects Service', () => {
                 batches.forEach((batch) => {
                     defectsService.deleteDefectList(
                         batch.map((item: { id: any; }) => {
-                            return item.id
+                            return item.id;
                         })
                     );
                 });
@@ -73,16 +73,16 @@ describe('Defects Service', () => {
         });
     });
 
-    context('when database is empty', () => {
-        it('should return error code 404', (done) => {
-            request.get('defects').expect(404, done)
+    context("when database is empty", () => {
+        it("should return error code 404", (done) => {
+            request.get("defects").expect(404, done);
         });
     });
 
     beforeEach((done) => {
-        setTimeout(done, 500)
+        setTimeout(done, 500);
     });
     afterEach((done) => {
-        setTimeout(done, 500)
+        setTimeout(done, 500);
     });
 });
