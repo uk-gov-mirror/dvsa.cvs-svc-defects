@@ -76,10 +76,12 @@ In order to generate SonarQube reports on local, follow the steps:
 
 ### Local Running
 
-To run this locally, add the following environment variables to your run configuration(s):
-* AWS_XRAY_CONTEXT_MISSING = LOG_ERROR
-* SLS_DEBUG = *
-* BRANCH = LOCAL
+To run this locally, add the following environment variables to your run configuration(s): (last two are local serverless workaround)
+* export AWS_XRAY_CONTEXT_MISSING=LOG_ERROR
+* export SLS_DEBUG=*
+* export BRANCH=LOCAL
+* export AWS_ACCESS_KEY_ID=id_key
+* export AWS_SECRET_ACCESS_KEY=access_key
 
 and change the serverless.yml so that Custom > DynamoDB >
 *      migrate: true
