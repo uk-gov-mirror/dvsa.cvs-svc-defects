@@ -31,6 +31,8 @@ functions:
 custom:
   serverless-offline:
     port: 3001
+  stages:
+    - dev
   dynamodb:
     stages:
       - dev
