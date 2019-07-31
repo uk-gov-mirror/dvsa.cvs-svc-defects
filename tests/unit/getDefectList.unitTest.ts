@@ -1,39 +1,55 @@
 import { DefectsService } from "../../src/services/DefectsService";
-import { Injector } from "../../src/models/injector/Injector";
-import { DefectsDAOMock } from "../models/DefectsDAOMock";
 import { expect } from "chai";
 import { HTTPError } from "../../src/models/HTTPError";
 
 
 
-describe("getDefectList", () => {
+describe("when calling service method getDefectList", () => {
     describe("when database is on", () => {
-        context("when db call returns data", () => {
-            it("should return a populated response", () => {
-                const defectsService: DefectsService = Injector.resolve<DefectsService>(DefectsService, [DefectsDAOMock]);
-                DefectsDAOMock.defectRecordsMock = [{ imNumber: "1" }];
-                DefectsDAOMock.numberOfRecords = 1;
-                DefectsDAOMock.numberOfScannedRecords = 1;
+        context("when defectsDAO getAll resolves promise with data", () => {
+            it("should return a defect item", () => {
+                const expectedDefects = {
+                    Items: [{ imNumber: "1" }]
+                };
 
-                return defectsService.getDefectList()
+                const MockDefectsDAO = jest.fn().mockImplementation(() => {
+                    return {
+                        getAll: () => {
+                            return Promise.resolve(expectedDefects);
+                        }
+                    };
+                });
+
+                const mockDefectsDAO = new MockDefectsDAO();
+                const service: DefectsService = new DefectsService(mockDefectsDAO);
+                service.getDefectList()
                     .then((returnedRecords) => {
                         expect(returnedRecords).to.not.equal(undefined);
                         expect(returnedRecords).to.not.equal({});
-                        expect(returnedRecords).to.eql(DefectsDAOMock.defectRecordsMock);
-                        expect(returnedRecords.length).to.be.equal(DefectsDAOMock.defectRecordsMock.length);
+                        expect(returnedRecords).to.eql(expectedDefects);
+                        expect(returnedRecords.length).to.be.equal(expectedDefects.Items.length);
                     });
             });
         });
 
-        context("when db returns empty data", () => {
-            it("should return 404-No resources match the search criteria", () => {
-                const defectsService: DefectsService = Injector.resolve<DefectsService>(DefectsService, [DefectsDAOMock]);
-                DefectsDAOMock.defectRecordsMock = {};
-                DefectsDAOMock.numberOfRecords = 0;
-                DefectsDAOMock.numberOfScannedRecords = 0;
+        context("when defectsDAO getAll resolves promise with empty data", () => {
+            it("should return HTTP Error Code 404-No resources match the search criteria", () => {
+                const expectedDefects = {
+                    Items: [],
+                    Count: 0
+                };
 
+                const MockDefectsDAO = jest.fn().mockImplementation(() => {
+                    return {
+                        getAll: () => {
+                            return Promise.resolve(expectedDefects);
+                        }
+                    };
+                });
 
-                return defectsService.getDefectList()
+                const mockDefectsDAO = new MockDefectsDAO();
+                const defectsService: DefectsService = new DefectsService(mockDefectsDAO);
+                defectsService.getDefectList()
                     .then(() => {
                         expect.fail();
                     }).catch((errorResponse) => {
@@ -44,14 +60,24 @@ describe("getDefectList", () => {
             });
         });
 
-        context("when db return undefined data", () => {
-            it("should return 404-No resources match the search criteria if db return null data", () => {
-                const defectsService: DefectsService = Injector.resolve<DefectsService>(DefectsService, [DefectsDAOMock]);
-                DefectsDAOMock.defectRecordsMock = undefined;
-                DefectsDAOMock.numberOfRecords = 0;
-                DefectsDAOMock.numberOfScannedRecords = 0;
+        context("when defectsDAO getAll resolves promise with undefined data", () => {
+            it("should return 404-No resources match the search criteria", () => {
+                const expectedDefects = {
+                    Items: undefined,
+                    Count: 0
+                };
 
-                return defectsService.getDefectList()
+                const MockDefectsDAO = jest.fn().mockImplementation(() => {
+                    return {
+                        getAll: () => {
+                            return Promise.resolve(expectedDefects);
+                        }
+                    };
+                });
+
+                const mockDefectsDAO = new MockDefectsDAO();
+                const defectsService: DefectsService = new DefectsService(mockDefectsDAO);
+                defectsService.getDefectList()
                     .then(() => {
                         expect.fail();
                     }).catch((errorResponse) => {
@@ -64,12 +90,19 @@ describe("getDefectList", () => {
     });
 
     describe("when database is off", () => {
-        context("when db does not return response", () => {
+        context("when defectsDAO returns a rejected promise", () => {
             it("should return 500-Internal Server Error", () => {
-                const defectsService: DefectsService = Injector.resolve<DefectsService>(DefectsService, [DefectsDAOMock]);
-                DefectsDAOMock.isDatabaseOn = false;
+                const MockDefectsDAO = jest.fn().mockImplementation(() => {
+                    return {
+                        getAll: () => {
+                            return Promise.reject({});
+                        }
+                    };
+                });
 
-                return defectsService.getDefectList()
+                const mockDefectsDAO = new MockDefectsDAO();
+                const service: DefectsService = new DefectsService(mockDefectsDAO);
+                service.getDefectList()
                     .then(() => {
                         expect.fail();
                     })
