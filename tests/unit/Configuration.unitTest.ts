@@ -18,9 +18,9 @@ describe("ConfigurationUtil", () => {
 
     context("when calling the getInvokeConfig()", () => {
         beforeEach(() => {jest.resetModules(); });
-        afterEach(() => {
-            sandbox.restore();
-        });
+        // afterEach(() => {
+        //     sandbox.restore();
+        // });
 
         context("the config is empty", () => {
             it("should throw error", () => {
@@ -67,7 +67,7 @@ describe("ConfigurationUtil", () => {
 
     context("when calling the getDynamoDBConfig()", () => {
         beforeEach(() => {jest.resetModules(); });
-        afterEach(() => {sandbox.restore(); });
+        // afterEach(() => {sandbox.restore(); });
 
         context("the config is empty", () => {
             process.env.BRANCH = "local";

@@ -8,18 +8,19 @@
     "url": "https://github.com/dvsa/cvs-svc-defects.git"
   },
   "scripts": {
-    "start": "npm run tslint && BRANCH=local ./node_modules/serverless/bin/serverless offline start",
-    "test": "jest --testMatch=\"**/*.unitTest.ts\"",
+    "start": "BRANCH=local SLS_DEBUG=* ./node_modules/serverless/bin/serverless offline start",
+    "startx": "npm run lint && BRANCH=local SLS_DEBUG=* ./node_modules/serverless/bin/serverless offline start",
+    "test": "BRANCH=local SLS_DEBUG=* jest --testMatch=\"**/*.unitTest.ts\" --coverage",
     "build": "node_modules/typescript/bin/tsc --rootDir ./ --outDir .build --sourceMap false && npm run build:copy",
     "build:copy": "find src -type f \\( -name \"*.yml\" -or -name \"*.json\" \\) | cpio -pdm .build && find tests -type f \\( -name \"*.yml\" -or -name \"*.json\" \\)  | cpio -pdm .build",
-    "test-i": "jest --testMatch=\"**/*.intTest.ts\"",
+    "test-i": "BRANCH=local jest --testMatch=\"**/*.intTest.ts\"",
     "end:test": "node_modules/gulp/bin/gulp.js kill-serverless",
     "prepush": "BRANCH=local npm test && npm run tslint",
     "predeploy": "npm install && npm run prepush",
     "security-checks": "git secrets --scan && git log -p | scanrepo",
-    "tslint": "tslint src/**/*.ts tests/**/*.ts -t json -o report.json",
+    "lint": "tslint src/**/*.ts tests/**/*.ts -q",
     "sonar-scanner": "npm run tslint && npm run coverage && sonar-scanner",
-    "coverage": "jest --testMatch=\"**/*Test.ts\" --coverage",
+    "coverage": "npm run test && open coverage/lcov-report/index.html",
     "audit-dep": "npm audit --json | audit-filter --nsp-config=.nsprc --audit=-"
   },
   "nyc": {
@@ -83,15 +84,20 @@
     "supertest": "^3.4.2",
     "ts-jest": "^24.0.2",
     "ts-node": "^8.3.0",
-    "tslint": "^5.12.1",
+    "tslint": "^5.18.0",
     "tslint-jsdoc-rules": "^0.1.3",
     "tslint-no-unused-expression-chai": "^0.1.4",
-    "typescript": "^3.2.4"
+    "typescript": "^3.5.3"
   },
   "dependencies": {
     "aws-sdk": "^2.332.0",
     "aws-xray-sdk": "^2.3.2",
     "node-yaml": "^4.0.1",
     "reflect-metadata": "^0.1.13"
+  },
+  "jest": {
+    "coverageDirectory": "./coverage",
+    "collectCoverage": true,
+    "testURL": "http://localhost"
   }
 }

@@ -1,8 +1,6 @@
 import { HTTPError } from "../models/HTTPError";
 import { DefectsDAO } from "../models/DefectsDAO";
-import { Service } from "../models/injector/ServiceDecorator";
 
-@Service()
 export class DefectsService {
     public readonly defectsDAO: DefectsDAO;
 
