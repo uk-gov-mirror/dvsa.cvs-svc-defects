@@ -14,6 +14,7 @@ describe("DefectsDAO", () => {
     });
 
     context("createMultiple", () => {
+        beforeEach(() => {jest.resetModules(); });
         afterEach(() => sandbox.restore());
         it("correctly processes an array of inputs",  async () => {
             mockDocumentClientWithReturn("Success");
@@ -24,6 +25,7 @@ describe("DefectsDAO", () => {
     });
 
     context("deleteMultiple", () => {
+        beforeEach(() => {jest.resetModules(); });
         afterEach(() => sandbox.restore());
         it("correctly processes an array of inputs",  async () => {
             mockDocumentClientWithReturn("Success");
