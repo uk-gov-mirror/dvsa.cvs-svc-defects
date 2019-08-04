@@ -2,8 +2,6 @@ import { DefectsService } from "../../src/services/DefectsService";
 import { expect } from "chai";
 import { HTTPError } from "../../src/models/HTTPError";
 
-
-
 describe("when calling service method getDefectList", () => {
     describe("when database is on", () => {
         context("when defectsDAO getAll resolves promise with data", () => {
