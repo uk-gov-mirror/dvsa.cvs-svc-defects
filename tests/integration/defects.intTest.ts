@@ -4,7 +4,6 @@ import fs from "fs";
 import path from "path";
 import { DefectsService } from "../../src/services/DefectsService";
 import { DefectsDAO } from "../../src/models/DefectsDAO";
-import { Injector } from "../../src/models/injector/Injector";
 
 const url = "http://localhost:3001/";
 const request = supertest(url);
