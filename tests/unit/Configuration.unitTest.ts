@@ -2,8 +2,6 @@ import {expect} from "chai";
 import {Configuration} from "../../src/utils/Configuration";
 import {IDBConfig, IInvokeConfig} from "../../src/models";
 import {ERRORS} from "../../src/assets/Enums";
-import sinon from "sinon";
-const sandbox = sinon.createSandbox();
 
 describe("ConfigurationUtil", () => {
     const branch = process.env.BRANCH;
@@ -18,13 +16,10 @@ describe("ConfigurationUtil", () => {
 
     context("when calling the getInvokeConfig()", () => {
         beforeEach(() => {jest.resetModules(); });
-        // afterEach(() => {
-        //     sandbox.restore();
-        // });
 
         context("the config is empty", () => {
             it("should throw error", () => {
-                sandbox.stub(process.env, "BRANCH").value("local");
+                process.env.BRANCH = "local";
                 const emptyConfig = new Configuration("../../tests/resources/EmptyConfig.yml", "../resources/EmptyConfig.yml");
                 try {
                     emptyConfig.getInvokeConfig();
@@ -67,7 +62,6 @@ describe("ConfigurationUtil", () => {
 
     context("when calling the getDynamoDBConfig()", () => {
         beforeEach(() => {jest.resetModules(); });
-        // afterEach(() => {sandbox.restore(); });
 
         context("the config is empty", () => {
             process.env.BRANCH = "local";
