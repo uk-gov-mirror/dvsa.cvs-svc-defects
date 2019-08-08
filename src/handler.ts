@@ -1,3 +1,4 @@
 import {getDefects} from './functions/getDefects';
 
-export {getDefects as handler};
+const handler = getDefects;
+export {handler};
