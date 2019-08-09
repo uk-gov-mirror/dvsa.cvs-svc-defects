@@ -91,9 +91,9 @@
   },
   "dependencies": {
     "aws-lambda": "^0.1.2",
-    "aws-sdk": "^2.332.0",
-    "aws-xray-sdk": "^2.3.2",
-    "node-yaml": "^4.0.1",
+    "aws-sdk": "^2.473.0",
+    "aws-xray-sdk": "^2.3.3",
+    "node-yaml": "^3.2.0",
     "path-parser": "^4.2.0",
     "reflect-metadata": "^0.1.13"
   },
