@@ -3444,7 +3444,6 @@
     "imNumber": 13,
     "imDescription": "Trailer Landing Legs",
     "forVehicleType": [
-      "hgv",
       "trl"
     ],
     "additionalInfo": {
@@ -6666,8 +6665,7 @@
     "imNumber": 24,
     "imDescription": "Accessibility Features",
     "forVehicleType": [
-      "psv",
-      "hgv"
+      "psv"
     ],
     "additionalInfo": {
       "psv": {
@@ -8029,26 +8027,6 @@
         "itemNumber": 1,
         "itemDescription": "Steering column:",
         "forVehicleType": [
-          "hgv"
-        ],
-        "deficiencies": [
-          {
-            "ref": "30.1.d.i",
-            "deficiencyId": "d",
-            "deficiencySubId": "i",
-            "deficiencyCategory": "major",
-            "deficiencyText": "coupling clamp bolt or locking device missing or loose.",
-            "stdForProhibition": false,
-            "forVehicleType": [
-              "hgv"
-            ]
-          }
-        ]
-      },
-      {
-        "itemNumber": 1,
-        "itemDescription": "Steering column:",
-        "forVehicleType": [
           "psv",
           "hgv"
         ],
@@ -8061,7 +8039,8 @@
             "deficiencyText": "couple clamp bolt or locking device missing or loose.",
             "stdForProhibition": false,
             "forVehicleType": [
-              "psv"
+              "psv",
+              "hgv"
             ]
           },
           {
@@ -10263,7 +10242,7 @@
       },
       {
         "itemNumber": 4,
-        "itemDescription": "A Power train:",
+        "itemDescription": "A power train:",
         "forVehicleType": [
           "psv",
           "hgv",
@@ -15048,10 +15027,12 @@
             "deficiencyId": "b",
             "deficiencySubId": null,
             "deficiencyCategory": "major",
-            "deficiencyText": "more than two (vehicles up to 6m in length) or four (vehicles over 6m in length) optional reversing lamps fitted.",
+            "deficiencyText": "more than two (vehicles/trailers up to 6m in length) or four (vehicles/trailers over 6m in length) optional reversing lamps fitted.",
             "stdForProhibition": false,
             "forVehicleType": [
-              "psv"
+              "psv",
+              "hgv",
+              "trl"
             ]
           },
           {
@@ -15217,28 +15198,6 @@
             "stdForProhibition": false,
             "forVehicleType": [
               "psv",
-              "hgv",
-              "trl"
-            ]
-          }
-        ]
-      },
-      {
-        "itemNumber": 7,
-        "itemDescription": "Reversing lamp:",
-        "forVehicleType": [
-          "hgv",
-          "trl"
-        ],
-        "deficiencies": [
-          {
-            "ref": "63.7.b",
-            "deficiencyId": "b",
-            "deficiencySubId": null,
-            "deficiencyCategory": "major",
-            "deficiencyText": "more than two (vehicles/trailers up to 6m in length) or four (vehicles/trailers over 6m in length) optional reversing lamps fitted.",
-            "stdForProhibition": false,
-            "forVehicleType": [
               "hgv",
               "trl"
             ]
@@ -15568,6 +15527,7 @@
         "itemNumber": 1,
         "itemDescription": "Direction indicator:",
         "forVehicleType": [
+          "psv",
           "hgv",
           "trl"
         ],
@@ -15580,30 +15540,9 @@
             "deficiencyText": "missing, inoperative, operating on the wrong side of a vehicle/trailer, not visible either to the front, side, or to the rear.",
             "stdForProhibition": false,
             "forVehicleType": [
+              "psv",
               "hgv",
               "trl"
-            ]
-          }
-        ]
-      },
-      {
-        "itemNumber": 1,
-        "itemDescription": "Direction indicator:",
-        "forVehicleType": [
-          "psv",
-          "hgv",
-          "trl"
-        ],
-        "deficiencies": [
-          {
-            "ref": "66.1.a",
-            "deficiencyId": "a",
-            "deficiencySubId": null,
-            "deficiencyCategory": "major",
-            "deficiencyText": "missing, inoperative, operating on the wrong side of a vehicle,  not visible either to the front, side, or to the rear.",
-            "stdForProhibition": false,
-            "forVehicleType": [
-              "psv"
             ]
           },
           {
