@@ -15484,8 +15484,50 @@
         },
         "notes": true
       },
-      "hgv": {},
-      "trl": {}
+      "hgv": {
+        "location": {
+          "vertical": [
+            "upper",
+            "lower"
+          ],
+          "horizontal": null,
+          "lateral": [
+            "nearside",
+            "offside",
+            "centre"
+          ],
+          "longitudinal": [
+            "front",
+            "rear"
+          ],
+          "rowNumber": null,
+          "seatNumber": null,
+          "axleNumber": null
+        },
+        "notes": true
+      },
+      "trl": {
+        "location": {
+          "vertical": [
+            "upper",
+            "lower"
+          ],
+          "horizontal": null,
+          "lateral": [
+            "nearside",
+            "offside",
+            "centre"
+          ],
+          "longitudinal": [
+            "front",
+            "rear"
+          ],
+          "rowNumber": null,
+          "seatNumber": null,
+          "axleNumber": null
+        },
+        "notes": true
+      }
     },
     "items": [
       {
