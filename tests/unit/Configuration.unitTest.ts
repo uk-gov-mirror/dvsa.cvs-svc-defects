@@ -20,7 +20,7 @@ describe("ConfigurationUtil", () => {
         context("the config is empty", () => {
             it("should throw error", () => {
                 process.env.BRANCH = "local";
-                const emptyConfig = new Configuration("../../tests/resources/EmptyConfig.yml", "../resources/EmptyConfig.yml");
+                const emptyConfig = new Configuration("../../tests/resources/EmptyConfig.yml");
                 try {
                     emptyConfig.getInvokeConfig();
                     expect.fail();
@@ -65,7 +65,7 @@ describe("ConfigurationUtil", () => {
 
         context("the config is empty", () => {
             process.env.BRANCH = "local";
-            const emptyConfig: Configuration = new Configuration("../../tests/resources/EmptyConfig.yml", "../resources/EmptyConfig.yml");
+            const emptyConfig: Configuration = new Configuration("../../tests/resources/EmptyConfig.yml");
             it("should throw error", () => {
                 try {
                     emptyConfig.getDynamoDBConfig();

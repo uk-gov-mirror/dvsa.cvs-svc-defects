@@ -16,6 +16,7 @@
         "alwaysStrict": true, /* Parse in strict mode and emit "use strict" for each source file. */
         /* Module Resolution Options */
         "esModuleInterop": true, /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
-        "experimentalDecorators": true
+        "experimentalDecorators": true,
+        "resolveJsonModule": true
     }
 }

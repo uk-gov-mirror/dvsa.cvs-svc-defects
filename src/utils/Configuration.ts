@@ -27,7 +27,7 @@ class Configuration {
     private static instance: Configuration;
     private readonly config: any;
 
-    constructor(configPath: string, secretsPath: string) {
+    constructor(configPath: string) {
         if (!process.env.BRANCH) {throw new Error(ERRORS.NoBranch); }
 
         const config = yml.readSync(configPath);
@@ -58,7 +58,7 @@ class Configuration {
      */
     public static getInstance(): Configuration {
         if (!this.instance) {
-            this.instance = new Configuration("../config/config.yml", "../config/secrets.yml");
+            this.instance = new Configuration("../config/config.yml");
         }
 
         return Configuration.instance;
