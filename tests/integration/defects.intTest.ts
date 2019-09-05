@@ -10,10 +10,10 @@ const request = supertest(url);
 
 describe("Defects Service", () => {
     describe("getDefects", () => {
+        let defectsService: DefectsService;
+        const defectsData = JSON.parse(fs.readFileSync(path.resolve(__dirname, "../resources/defects.json"), "utf8"));
+        const defectsDAO: DefectsDAO = new DefectsDAO();
         context("when database is populated", () => {
-            let defectsService: DefectsService;
-            const defectsData = JSON.parse(fs.readFileSync(path.resolve(__dirname, "../resources/defects.json"), "utf8"));
-            const defectsDAO: DefectsDAO = new DefectsDAO();
 
             beforeAll((done) => {
                 defectsService =  new DefectsService(defectsDAO);
@@ -50,7 +50,12 @@ describe("Defects Service", () => {
                     });
             });
 
-            afterAll((done: () => boolean) => {
+
+
+        });
+
+        context("when database is empty", () => {
+            beforeAll((done: () => boolean) => {
                 const dataBuffer = defectsData;
 
                 const batches = Array();
@@ -69,19 +74,16 @@ describe("Defects Service", () => {
                 done();
             });
 
+            it("should return error code 404", (done) => {
+                request.get("defects").expect(404, done);
+            });
         });
-    });
 
-    context("when database is empty", () => {
-        it("should return error code 404", (done) => {
-            request.get("defects").expect(404, done);
+        beforeEach((done) => {
+            setTimeout(done, 500);
         });
-    });
-
-    beforeEach((done) => {
-        setTimeout(done, 500);
-    });
-    afterEach((done) => {
-        setTimeout(done, 500);
+        afterEach((done) => {
+            setTimeout(done, 500);
+        });
     });
 });
