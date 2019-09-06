@@ -13,7 +13,7 @@ describe("Defects Service", () => {
         let defectsService: DefectsService;
         const defectsData = JSON.parse(fs.readFileSync(path.resolve(__dirname, "../resources/defects.json"), "utf8"));
         const defectsDAO: DefectsDAO = new DefectsDAO();
-        context("when database is populated", async () => {
+        context("when database is populated", () => {
 
             beforeAll((done) => {
                 defectsService =  new DefectsService(defectsDAO);
@@ -54,7 +54,7 @@ describe("Defects Service", () => {
 
         });
 
-        context("when database is empty", async () => {
+        context("when database is empty", () => {
             beforeAll((done: () => boolean) => {
                 const dataBuffer = defectsData;
 
