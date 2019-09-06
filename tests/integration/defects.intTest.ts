@@ -13,7 +13,7 @@ describe("Defects Service", () => {
         let defectsService: DefectsService;
         const defectsData = JSON.parse(fs.readFileSync(path.resolve(__dirname, "../resources/defects.json"), "utf8"));
         const defectsDAO: DefectsDAO = new DefectsDAO();
-        context("when database is populated", () => {
+        context("when database is populated", async () => {
 
             beforeAll((done) => {
                 defectsService =  new DefectsService(defectsDAO);
@@ -31,7 +31,7 @@ describe("Defects Service", () => {
                 done();
             });
 
-            it("should return all defects in the database", (done) => {
+            it("should return all defects in the database", async (done) => {
                 const expectedResponse = JSON.parse(JSON.stringify(defectsData)).map((defect: { id: any; }) => {
                     delete defect.id;
                     return defect;
@@ -54,7 +54,7 @@ describe("Defects Service", () => {
 
         });
 
-        context("when database is empty", () => {
+        context("when database is empty", async () => {
             beforeAll((done: () => boolean) => {
                 const dataBuffer = defectsData;
 
@@ -74,7 +74,7 @@ describe("Defects Service", () => {
                 done();
             });
 
-            it("should return error code 404", (done) => {
+            it("should return error code 404", async (done) => {
                 request.get("defects").expect(404, done);
             });
         });
