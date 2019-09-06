@@ -2,15 +2,32 @@
 import * as yml from "node-yaml";
 import {IInvokeConfig, IDBConfig} from "../models";
 import {ERRORS} from "../assets/Enums";
+import {Handler} from "aws-lambda";
+
 /**
  * Configuration class for retrieving project config
  */
+
+enum HTTPMethods {
+    GET = "GET",
+    POST = "POST",
+    PUT = "PUT",
+    DELETE = "DELETE"
+}
+
+interface IFunctionEvent {
+    name: string;
+    method: HTTPMethods;
+    path: string;
+    function: Handler;
+}
+
 class Configuration {
 
     private static instance: Configuration;
     private readonly config: any;
 
-    constructor(configPath: string, secretsPath: string) {
+    constructor(configPath: string) {
         if (!process.env.BRANCH) {throw new Error(ERRORS.NoBranch); }
 
         const config = yml.readSync(configPath);
@@ -41,7 +58,7 @@ class Configuration {
      */
     public static getInstance(): Configuration {
         if (!this.instance) {
-            this.instance = new Configuration("../config/config.yml", "../config/secrets.yml");
+            this.instance = new Configuration("../config/config.yml");
         }
 
         return Configuration.instance;
@@ -71,6 +88,28 @@ class Configuration {
     }
 
     /**
+     * Retrieves the lambda functions declared in the config
+     * @returns IFunctionEvent[]
+     */
+    public getFunctions(): IFunctionEvent[] {
+        if (!this.config.functions) {
+            throw new Error("Functions were not defined in the config file.");
+        }
+
+        return this.config.functions.map((fn: Handler) => {
+            const [name, params]: any = Object.entries(fn)[0];
+            const path: string = (params.proxy) ? params.path.replace("{+proxy}", params.proxy) : params.path;
+
+            return {
+                name,
+                method: params.method.toUpperCase(),
+                path,
+                function: require(`../functions/${name}`)[name]
+            };
+        });
+    }
+
+    /**
      * Retrieves the DynamoDB config
      * @returns any
      */
@@ -96,4 +135,4 @@ class Configuration {
     }
 }
 
-export { Configuration };
+export { Configuration, IFunctionEvent };
