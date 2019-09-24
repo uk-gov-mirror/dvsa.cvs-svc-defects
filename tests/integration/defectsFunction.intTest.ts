@@ -1,13 +1,20 @@
-import LambdaTester from "lambda-tester";
-// import { getDefects } from "../../src/functions/getDefects";
 import { handler } from "../../src/handler";
-import {expect} from "chai";
+import mockContext from "aws-lambda-mock-context";
+import { HTTPRESPONSE } from "../../src/assets/Enums";
+const ctx = mockContext();
 
 describe("getDefects", () => {
   it("should return a promise", async () => {
-    const lambda = LambdaTester(handler);
-    return lambda.expectResolve((response: any) => {
-      expect(response).to.exist;
-    });
+    const event = {
+      path: "/defects",
+      pathParameters: null,
+      resource: "/defects",
+      httpMethod: "GET",
+      queryStringParameters: null
+    };
+    const response = await handler(event, ctx, () => { return; });
+    ctx.succeed(true);
+    expect(response).toBeDefined;
+    expect(response.statusCode).toEqual(404);
   });
 });

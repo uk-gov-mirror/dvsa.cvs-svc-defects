@@ -1,4 +1,3 @@
-import { default as unwrappedAWS } from "aws-sdk";
 import { Configuration } from "../utils/Configuration";
 import { PromiseResult } from "aws-sdk/lib/request";
 import { DocumentClient } from "aws-sdk/lib/dynamodb/document_client";
@@ -8,8 +7,21 @@ import { IDBConfig } from ".";
 https://github.com/aws/aws-xray-sdk-node/issues/14
 */
 /* tslint:disable */
-const AWSXRay = require('aws-xray-sdk')
-const AWS = AWSXRay.captureAWS(unwrappedAWS)
+// const AWSXRay = require('aws-xray-sdk')
+// const AWS = AWSXRay.captureAWS(unwrappedAWS)
+/* tslint:enable */
+/**
+ * workaround serverless-offline open bug
+ * https://github.com/dherault/serverless-offline/issues/327
+ */
+/* tslint:disable */
+let AWS: { DynamoDB: { DocumentClient: new (arg0: any) => DocumentClient; }; };
+if (process.env._X_AMZN_TRACE_ID) {
+    AWS = require("aws-xray-sdk").captureAWS(require("aws-sdk"));
+} else {
+    console.log("Serverless Offline detected; skipping AWS X-Ray setup")
+    AWS = require("aws-sdk");
+}
 /* tslint:enable */
 
 

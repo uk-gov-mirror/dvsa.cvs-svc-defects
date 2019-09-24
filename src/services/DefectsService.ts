@@ -8,8 +8,8 @@ export class DefectsService {
         this.defectsDAO = defectsDAO;
     }
 
-    public getDefectList() {
-        return this.defectsDAO.getAll()
+    public async getDefectList() {
+        return await this.defectsDAO.getAll()
             .then((data: any) => {
                 if (data.Count === 0) {
                     throw new HTTPError(404, "No resources match the search criteria.");
@@ -34,8 +34,8 @@ export class DefectsService {
             });
     }
 
-    public insertDefectList(defectItems: any) {
-        return this.defectsDAO.createMultiple(defectItems)
+    public async insertDefectList(defectItems: any) {
+        return await this.defectsDAO.createMultiple(defectItems)
             .then((data) => {
                 if (data.UnprocessedItems) { return data.UnprocessedItems; }
             })
@@ -47,8 +47,8 @@ export class DefectsService {
             });
     }
 
-    public deleteDefectList(defectItemKeys: string[]) {
-        return this.defectsDAO.deleteMultiple(defectItemKeys)
+    public async deleteDefectList(defectItemKeys: string[]) {
+        return await this.defectsDAO.deleteMultiple(defectItemKeys)
           .then((data) => {
             if (data.UnprocessedItems) { return data.UnprocessedItems; }
           })
