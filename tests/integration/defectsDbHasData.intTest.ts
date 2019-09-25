@@ -1,12 +1,16 @@
 import supertest from "supertest";
 import fs from "fs";
 import path from "path";
-import { populateTestDatabase, emptyTestDatabase } from "../utils/dbOperations";
+import { populateTestDatabase, emptyTestDatabase, emptyDatabase, populateDatabase } from "../utils/dbOperations";
 
 const url = "http://localhost:3001/";
 const request = supertest(url);
 
 describe("getDefects", () => {
+    beforeAll(async () => {
+        await emptyDatabase();
+    });
+
     beforeEach(async () => {
         await populateTestDatabase();
     });
@@ -14,6 +18,11 @@ describe("getDefects", () => {
     afterEach(async () => {
         await emptyTestDatabase();
     });
+
+    afterAll(async () => {
+        await populateDatabase();
+    });
+    
 
     context("when database is populated", () => {
         it("should return all defects in the database", async () => {

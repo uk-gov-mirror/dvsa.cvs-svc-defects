@@ -42,7 +42,7 @@ const handler: Handler = async (event: any, context: Context, callback: Callback
     // Exactly one λ should match the above filtering.
     if (matchingLambdaEvents.length === 1) {
         const lambdaEvent: IFunctionEvent = matchingLambdaEvents[0];
-        const lambdaFn: Handler = lambdaEvent.function;
+        const lambdaFn = lambdaEvent.function;
 
         const localPath: Path = new Path(lambdaEvent.path);
         const remotePath: Path = new Path(`${serverlessConfig.basePath}${lambdaEvent.path}`); // Remote paths also have environment
@@ -54,7 +54,7 @@ const handler: Handler = async (event: any, context: Context, callback: Callback
         console.log(`HTTP ${event.httpMethod} ${event.path} -> λ ${lambdaEvent.name}`);
 
         // Explicit conversion because typescript can't figure it out
-        return lambdaFn(event, context, callback) as Promise<APIGatewayProxyResult>;
+        return lambdaFn(event, context, () => {return; });
     }
 
     // If filtering results in less or more λ functions than expected, we return an error.

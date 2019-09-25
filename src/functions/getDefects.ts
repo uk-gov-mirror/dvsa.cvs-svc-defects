@@ -7,7 +7,7 @@ export const getDefects: Handler = async () => {
     const defectsDAO = new DefectsDAO();
     const defectsService = new DefectsService(defectsDAO);
 
-    return defectsService.getDefectList()
+    return await defectsService.getDefectList()
     .then((data: any) => {
         return new HTTPResponse(200, data);
     })
