@@ -39,7 +39,7 @@ custom:
       inMemory: true
       migrate: false
       seed: false
-      noStart: false
+      noStart: true
     seed:
       defects:
         sources:
