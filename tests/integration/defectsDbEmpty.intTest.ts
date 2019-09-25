@@ -10,7 +10,7 @@ describe("Defects Service", () => {
             const res = await request.get("defects");
             expect(res.ok).toBeFalsy();
             expect(res.status).toEqual(404);
-            expect(res.text).toEqual(JSON.stringify(HTTPRESPONSE.RESOURCE_NOT_FOUND))
+            expect(res.text).toEqual(JSON.stringify(HTTPRESPONSE.RESOURCE_NOT_FOUND));
         });
     });
 });

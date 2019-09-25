@@ -14,7 +14,7 @@ export const populateDatabase = async (full = true) => {
     const defectsMockDB = JSON.parse(fs.readFileSync(path.resolve(__dirname, "../resources/defects.json"), "utf8"));
     const defectsService = new DefectsService(new DefectsDAO());
     if (full) {
-        await defectsService.insertDefectList(_.cloneDeep(defectsMockDB).splice(0,20));
+        await defectsService.insertDefectList(_.cloneDeep(defectsMockDB).splice(0, 20));
     } else {
         await defectsService.insertDefectList(_.cloneDeep(defectsMockDB).splice(0, 5));
     }

@@ -18,7 +18,7 @@ describe("getDefects", () => {
     context("when database is populated", () => {
         it("should return all defects in the database", async () => {
             const defectsData = JSON.parse(fs.readFileSync(path.resolve(__dirname, "../resources/defects.json"), "utf8"));
-            const expectedResponse = JSON.parse(JSON.stringify(defectsData.splice(0,5))).map((defect: { id: any; }) => {
+            const expectedResponse = JSON.parse(JSON.stringify(defectsData.splice(0, 5))).map((defect: { id: any; }) => {
                 delete defect.id;
                 return defect;
             }).sort((first: { imNumber: number; }, second: { imNumber: number; }) => first.imNumber - second.imNumber);
