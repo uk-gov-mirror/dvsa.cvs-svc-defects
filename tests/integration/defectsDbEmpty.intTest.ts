@@ -21,9 +21,8 @@ describe("Defects Service", () => {
             expect(res.ok).toBeFalsy();
             expect(res.status).toEqual(404);
             expect(res.text).toEqual(JSON.stringify(HTTPRESPONSE.RESOURCE_NOT_FOUND));
-            }
-            catch(err) {
-                console.log('ERROR',err);
+            } catch (err) {
+                console.log("ERROR", err);
             }
         });
     });

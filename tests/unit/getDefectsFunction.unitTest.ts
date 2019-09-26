@@ -17,8 +17,8 @@ describe("getDefects Function", () => {
                 return Promise.resolve("success");
               });
         //    sandbox.stub(DefectsService.prototype, "getDefectList").resolves("success");
-           const res = await getDefects(null, ctx, () => {return; });
-           expect(res).toEqual(new HTTPResponse(200, "success"));
+            const res = await getDefects(null, ctx, () => {return; });
+            expect(res).toEqual(new HTTPResponse(200, "success"));
         });
     });
 

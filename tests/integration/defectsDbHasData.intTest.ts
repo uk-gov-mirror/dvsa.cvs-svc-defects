@@ -22,7 +22,7 @@ describe("getDefects", () => {
     afterAll(async () => {
         await populateDatabase();
     });
-    
+
 
     context("when database is populated", () => {
         it("should return all defects in the database", async () => {

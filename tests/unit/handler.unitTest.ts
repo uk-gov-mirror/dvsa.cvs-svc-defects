@@ -63,10 +63,10 @@ describe("The lambda function handler", () => {
     it("should return a Route Not Found error", async () => {
       const getFunctions = Configuration.prototype.getFunctions;
       Configuration.prototype.getFunctions = jest.fn().mockImplementation(() => []);
-      const event = { httpMethod: "GET", path: "" };
-      const result = await handler(event, ctx, () => { return; });
+      const eventNoRoute = { httpMethod: "GET", path: "" };
+      const result = await handler(eventNoRoute, ctx, () => { return; });
       expect(result.statusCode).toEqual(400);
-      expect(result.body).toEqual(JSON.stringify({ error: `Route ${event.httpMethod} ${event.path} was not found.` }));
+      expect(result.body).toEqual(JSON.stringify({ error: `Route ${eventNoRoute.httpMethod} ${eventNoRoute.path} was not found.` }));
       Configuration.prototype.getFunctions = getFunctions;
     });
   });
