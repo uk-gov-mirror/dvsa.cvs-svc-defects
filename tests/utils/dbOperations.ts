@@ -33,7 +33,7 @@ export const emptyDatabase = async (full = true) => {
 
     const defectsService = new DefectsService(new DefectsDAO());
     if (full) {
-        await defectsService.deleteDefectList(_.cloneDeep(defectIds));
+        await defectsService.deleteDefectList(_.cloneDeep(defectIds).splice(0, 20));
     } else {
         await defectsService.deleteDefectList(_.cloneDeep(defectIds).splice(0, 5));
     }
