@@ -10,10 +10,16 @@ jest.mock("../../src/services/DefectsService");
 describe("The lambda function handler", () => {
 
   context("With correct Config", () => {
-    context("should correctly handle incoming events", () => {
-      it("should call functions with correct event payload", async () => {
+    context("should correctly handle exported functions", () => {
+      it("should call the /defects function with correct event payload", async () => {
         // Specify your event, with correct path, payload etc
-        const vehicleRecordEvent = event;
+        const vehicleRecordEvent = {
+          path: "/defects",
+          pathParameters: null,
+          resource: "/defects",
+          httpMethod: "GET",
+          queryStringParameters: null
+        };
 
         // Stub out the actual functions
         DefectsService.prototype.getDefectList = jest.fn().mockImplementation(() => {
