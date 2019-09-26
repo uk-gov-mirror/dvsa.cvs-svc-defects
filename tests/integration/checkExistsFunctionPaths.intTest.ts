@@ -38,6 +38,7 @@ describe("getDefects", () => {
     ctx.succeed(response);
     ctx = null;
     expect(response).toBeDefined();
+    console.log(`checkExistsFunctionPaths Jenkins response is ${JSON.stringify(response)}`);
     expect(response.statusCode).toEqual(200);
     expect(JSON.parse(response.body).length).toEqual(5);
   });
