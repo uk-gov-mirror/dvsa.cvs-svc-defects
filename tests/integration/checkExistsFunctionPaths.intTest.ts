@@ -30,10 +30,13 @@ describe("getDefects", () => {
       queryStringParameters: null
     };
 
-    const ctx = mockContext();
+    const opts = Object.assign({
+      timeout: 0.5
+    });
+    const ctx = mockContext(opts);
     const response = await handler(event, ctx, () => { return; });
     ctx.succeed(response);
-    expect(response).toBeDefined;
+    expect(response).toBeDefined();
     expect(response.statusCode).toEqual(200);
     expect(JSON.parse(response.body).length).toEqual(5);
   });

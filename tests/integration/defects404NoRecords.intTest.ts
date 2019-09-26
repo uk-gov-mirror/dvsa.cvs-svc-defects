@@ -20,10 +20,14 @@ describe("getDefects", () => {
       httpMethod: "GET",
       queryStringParameters: null
     };
-    const ctx = mockContext();
+    const opts = Object.assign({
+      timeout: 0.5
+    });
+    let ctx: any = mockContext(opts);
     const response = await handler(event, ctx, () => { return; });
     ctx.succeed(response);
-    expect(response).toBeDefined;
+    ctx = null;
+    expect(response).toBeDefined();
     expect(response.statusCode).toEqual(404);
     expect(response.body).toEqual(JSON.stringify(HTTPRESPONSE.RESOURCE_NOT_FOUND));
   });
