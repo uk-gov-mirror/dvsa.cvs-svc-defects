@@ -33,9 +33,10 @@ describe("getDefects", () => {
     const opts = Object.assign({
       timeout: 0.5
     });
-    const ctx = mockContext(opts);
+    let ctx: any = mockContext(opts);
     const response = await handler(event, ctx, () => { return; });
     ctx.succeed(response);
+    ctx = null;
     expect(response).toBeDefined();
     expect(response.statusCode).toEqual(200);
     expect(JSON.parse(response.body).length).toEqual(5);

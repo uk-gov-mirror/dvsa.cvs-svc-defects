@@ -4,14 +4,19 @@ import { Configuration } from "../../src/utils/Configuration";
 import { HTTPResponse } from "../../src/models/HTTPResponse";
 import mockContext from "aws-lambda-mock-context";
 import { DefectsService } from "../../src/services/DefectsService";
-const ctx = mockContext();
+// const ctx = mockContext();
 jest.mock("../../src/services/DefectsService");
+const opts = Object.assign({
+  timeout: 0.2
+});
 
 describe("The lambda function handler", () => {
 
   context("With correct Config", () => {
     context("should correctly handle exported functions", () => {
       it("should call the /defects function with correct event payload", async () => {
+
+        let ctx: any = mockContext(opts);
         // Specify your event, with correct path, payload etc
         const vehicleRecordEvent = {
           path: "/defects",
@@ -28,14 +33,18 @@ describe("The lambda function handler", () => {
 
         // @ts-ignore
         const result = await handler(vehicleRecordEvent, ctx);
+        ctx.succeed(result);
+        ctx = null;
         expect(result.statusCode).toEqual(200);
         expect(DefectsService.prototype.getDefectList).toHaveBeenCalled();
       });
 
       it("should return error on empty event", async () => {
+        let ctx: any = mockContext(opts);
         // @ts-ignore
         const result = await handler(null, ctx);
-
+        ctx.succeed(result);
+        ctx = null;
         expect(result).toBeInstanceOf(HTTPResponse);
         expect(result.statusCode).toEqual(400);
         expect(result.body).toEqual(JSON.stringify("AWS event is empty. Check your test event."));
@@ -45,8 +54,11 @@ describe("The lambda function handler", () => {
         const invalidBodyEvent = Object.assign({}, event);
         invalidBodyEvent.body = '{"hello":}';
 
+        let ctx: any = mockContext(opts);
         // @ts-ignore
         const result = await handler(invalidBodyEvent, ctx, null);
+        ctx.succeed(result);
+        ctx = null;
         expect(result).toBeInstanceOf(HTTPResponse);
         expect(result.statusCode).toEqual(400);
         expect(result.body).toEqual(JSON.stringify("Body is not a valid JSON."));
@@ -57,8 +69,11 @@ describe("The lambda function handler", () => {
         // invalidPathEvent.body = ""
         invalidPathEvent.path = "/vehicles/123/doesntExist";
 
+        let ctx: any = mockContext(opts);
         // @ts-ignore
         const result = await handler(invalidPathEvent, ctx);
+        ctx.succeed(result);
+        ctx = null;
         expect(result.statusCode).toEqual(400);
         expect(result.body).toEqual(JSON.stringify({ error: `Route ${invalidPathEvent.httpMethod} ${invalidPathEvent.path} was not found.` }));
       });
@@ -70,7 +85,10 @@ describe("The lambda function handler", () => {
       const getFunctions = Configuration.prototype.getFunctions;
       Configuration.prototype.getFunctions = jest.fn().mockImplementation(() => []);
       const eventNoRoute = { httpMethod: "GET", path: "" };
+      let ctx: any = mockContext(opts);
       const result = await handler(eventNoRoute, ctx, () => { return; });
+      ctx.succeed(result);
+      ctx = null;
       expect(result.statusCode).toEqual(400);
       expect(result.body).toEqual(JSON.stringify({ error: `Route ${eventNoRoute.httpMethod} ${eventNoRoute.path} was not found.` }));
       Configuration.prototype.getFunctions = getFunctions;

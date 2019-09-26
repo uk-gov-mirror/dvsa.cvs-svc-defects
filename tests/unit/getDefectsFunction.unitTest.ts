@@ -1,9 +1,12 @@
-import {getDefects} from "../../src/functions/getDefects";
-import {DefectsService} from "../../src/services/DefectsService";
+import { getDefects } from "../../src/functions/getDefects";
+import { DefectsService } from "../../src/services/DefectsService";
 import mockContext from "aws-lambda-mock-context";
-import {HTTPResponse} from "../../src/models/HTTPResponse";
-import {HTTPError} from "../../src/models/HTTPError";
-const ctx = mockContext();
+import { HTTPResponse } from "../../src/models/HTTPResponse";
+import { HTTPError } from "../../src/models/HTTPError";
+jest.mock("../../src/services/DefectsService");
+const opts = Object.assign({
+    timeout: 0.5
+});
 
 
 describe("getDefects Function", () => {
@@ -15,10 +18,12 @@ describe("getDefects Function", () => {
         it("returns 200 with data", async () => {
             DefectsService.prototype.getDefectList = jest.fn().mockImplementation(() => {
                 return Promise.resolve("success");
-              });
-        //    sandbox.stub(DefectsService.prototype, "getDefectList").resolves("success");
-            const res = await getDefects(null, ctx, () => {return; });
-            expect(res).toEqual(new HTTPResponse(200, "success"));
+            });
+            let ctx: any = mockContext(opts);
+            const result = await getDefects(null, ctx, () => { return; });
+            ctx.succeed(result);
+            ctx = null;
+            expect(result).toEqual(new HTTPResponse(200, "success"));
         });
     });
 
@@ -26,10 +31,12 @@ describe("getDefects Function", () => {
         it("returns 200 with data", async () => {
             DefectsService.prototype.getDefectList = jest.fn().mockImplementation(() => {
                 return Promise.reject(new HTTPError(418, "Failed"));
-              });
-            // sandbox.stub(DefectsService.prototype, "getDefectList").rejects(new HTTPError(418, "Failed"));
-            const res = await getDefects(null, ctx, () => {return; });
-            expect(res).toEqual(new HTTPResponse(418, "Failed"));
+            });
+            let ctx: any = mockContext(opts);
+            const result = await getDefects(null, ctx, () => { return; });
+            ctx.succeed(result);
+            ctx = null;
+            expect(result).toEqual(new HTTPResponse(418, "Failed"));
         });
     });
 });
