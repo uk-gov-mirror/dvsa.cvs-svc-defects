@@ -12,7 +12,7 @@ describe("getDefects", () => {
     await populateDatabase();
   });
 
-  it("should return a promise", async () => {
+  it("should throw 404 when no records in dynamodb", async () => {
     const event = {
       path: "/defects",
       pathParameters: null,
