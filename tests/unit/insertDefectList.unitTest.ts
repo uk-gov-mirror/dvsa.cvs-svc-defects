@@ -1,11 +1,10 @@
 import { DefectsService } from "../../src/services/DefectsService";
-import { expect } from "chai";
 import { HTTPError } from "../../src/models/HTTPError";
 
 describe("when service method insertDefectList is called", () => {
     describe("when database is off", () => {
         context("when defectsDAO createMultiple returns a rejected promise", () => {
-            it("should return 500-Internal Server Error", () => {
+            it("should return 500-Internal Server Error", async () => {
                 const MockDefectsDAO = jest.fn().mockImplementation(() => {
                     return {
                         createMultiple: () => {
@@ -16,19 +15,21 @@ describe("when service method insertDefectList is called", () => {
 
                 const mockDefectsDAO = new MockDefectsDAO();
                 const service: DefectsService = new DefectsService(mockDefectsDAO);
-                service.insertDefectList([])
-                    .catch((errorResponse: HTTPError) => {
-                        expect(errorResponse).to.be.instanceOf(HTTPError);
-                        expect(errorResponse.statusCode).to.be.equal(500);
-                        expect(errorResponse.body).to.equal("Internal Server Error");
-                    });
+                try {
+                    await service.insertDefectList([]);
+                    expect.assertions(1); // should have thrown an error
+                } catch (errorResponse) {
+                    expect(errorResponse).toBeInstanceOf(HTTPError);
+                    expect(errorResponse.statusCode).toBe(500);
+                    expect(errorResponse.body).toBe("Internal Server Error");
+                }
             });
         });
     });
 
     describe("when database is on", () => {
         context("when defectsDAO createMultiple yields promise with unprocessed defect items", () => {
-            it("should return HTTP 200 along with unprocessed items", () => {
+            it("should return HTTP 200 along with unprocessed items", async () => {
                 const expectedUnprocessedDefects = {
                     UnprocessedItems: [{ imNumber: "1" }],
                     Count: 1
@@ -44,17 +45,15 @@ describe("when service method insertDefectList is called", () => {
 
                 const mockDefectsDAO = new MockDefectsDAO();
                 const defectsService: DefectsService = new DefectsService(mockDefectsDAO);
-                defectsService.insertDefectList(["1"])
-                    .then((result: any) => {
-                        expect(Object.keys(result).length).to.equal(1);
-                        expect(result.constructor).to.equal(Object);
-                    });
+                const result = await defectsService.insertDefectList(["1"]);
+                expect(Object.keys(result).length).toBe(1);
+                expect(result).toEqual(expectedUnprocessedDefects.UnprocessedItems);
             });
         });
 
 
         context("when defectsDAO createMultiple yields promise with no unprocessed defect items", () => {
-            it("should return HTTP 200", () => {
+            it("should return HTTP 200", async () => {
                 const MockDefectsDAO = jest.fn().mockImplementation(() => {
                     return {
                         createMultiple: () => {
@@ -65,10 +64,8 @@ describe("when service method insertDefectList is called", () => {
 
                 const mockDefectsDAO = new MockDefectsDAO();
                 const defectsService: DefectsService = new DefectsService(mockDefectsDAO);
-                defectsService.insertDefectList(["1"])
-                    .then((returnedRecords: any) => {
-                        expect(returnedRecords).to.equal(undefined);
-                    });
+                const returnedRecords = await defectsService.insertDefectList(["1"]);
+                expect(returnedRecords).toBe(undefined);
             });
         });
     });
