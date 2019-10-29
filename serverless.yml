@@ -31,11 +31,10 @@ functions:
 custom:
   serverless-offline:
     port: 3001
-  stages:
-    - dev
   dynamodb:
     stages:
       - dev
+      - test
     start:
       port: 8001
       inMemory: true

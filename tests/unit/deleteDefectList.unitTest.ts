@@ -1,11 +1,10 @@
 import { DefectsService } from "../../src/services/DefectsService";
-import { expect } from "chai";
 import { HTTPError } from "../../src/models/HTTPError";
 
 describe("when service method deleteDefectList is called", () => {
     describe("when database is off", () => {
         context("when defectsDAO deleteMultiple returns a rejected promise", () => {
-            it("should return 500-Internal Server Error", () => {
+            it("should return 500-Internal Server Error", async () => {
                 const MockDefectsDAO = jest.fn().mockImplementation(() => {
                     return {
                         deleteMultiple: () => {
@@ -16,20 +15,21 @@ describe("when service method deleteDefectList is called", () => {
 
                 const mockDefectsDAO = new MockDefectsDAO();
                 const defectsService: DefectsService = new DefectsService(mockDefectsDAO);
-
-                return defectsService.deleteDefectList([])
-                    .catch((errorResponse) => {
-                        expect(errorResponse).to.be.instanceOf(HTTPError);
-                        expect(errorResponse.statusCode).to.be.equal(500);
-                        expect(errorResponse.body).to.equal("Internal ServerError");
-                    });
+                try {
+                    await defectsService.deleteDefectList([]);
+                    expect.assertions(1); // should have thrown an error, test failed
+                } catch (errorResponse) {
+                    expect(errorResponse).toBeInstanceOf(HTTPError);
+                    expect(errorResponse.statusCode).toBe(500);
+                    expect(errorResponse.body).toBe("Internal ServerError");
+                }
             });
         });
     });
 
     describe("when database is on", () => {
         context("when defectsDAO deleteMultiple yields promise with unprocessed defect items", () => {
-            it("should return 200 along with unprocessed items", () => {
+            it("should return 200 along with unprocessed items", async () => {
                 const expectedUnprocessedDefects = {
                     UnprocessedItems: [{ imNumber: "1" }],
                     Count: 1
@@ -45,20 +45,18 @@ describe("when service method deleteDefectList is called", () => {
 
                 const mockDefectsDAO = new MockDefectsDAO();
                 const defectsService: DefectsService = new DefectsService(mockDefectsDAO);
-                return defectsService.deleteDefectList(["1"])
-                    .then((returnedRecords: any) => {
-                        expect(Object.keys(returnedRecords).length).to.equal(1);
-                        expect(returnedRecords.constructor).to.equal(Array);
-                        expect(returnedRecords).to.not.equal(undefined);
-                        expect(returnedRecords).to.not.equal({});
-                        expect(returnedRecords).to.deep.equal(expectedUnprocessedDefects.UnprocessedItems);
-                        expect(returnedRecords.length).to.be.equal(expectedUnprocessedDefects.UnprocessedItems.length);
-                    });
+                const returnedRecords = await defectsService.deleteDefectList(["1"]);
+                expect(Object.keys(returnedRecords).length).toBe(1);
+                expect(returnedRecords.constructor).toEqual(Array);
+                expect(returnedRecords).not.toBe(undefined);
+                expect(returnedRecords).not.toEqual({});
+                expect(returnedRecords).toEqual(expectedUnprocessedDefects.UnprocessedItems);
+                expect(returnedRecords.length).toBe(expectedUnprocessedDefects.UnprocessedItems.length);
             });
         });
 
         context("when defectsDAO deleteMultiple yields promise with no unprocessed defect items", () => {
-            it("should return HTTP 200", () => {
+            it("should return HTTP 200", async () => {
                 const MockDefectsDAO = jest.fn().mockImplementation(() => {
                     return {
                         deleteMultiple: () => {
@@ -69,10 +67,8 @@ describe("when service method deleteDefectList is called", () => {
 
                 const mockDefectsDAO = new MockDefectsDAO();
                 const defectsService: DefectsService = new DefectsService(mockDefectsDAO);
-                defectsService.deleteDefectList(["1"])
-                    .then((returnedRecords: any) => {
-                        expect(returnedRecords).to.equal(undefined);
-                    });
+                const returnedRecords = await defectsService.deleteDefectList(["1"]);
+                expect(returnedRecords).toBe(undefined);
             });
         });
     });
